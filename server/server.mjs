@@ -2,6 +2,7 @@ import http from 'node:http';
 import {pathToFileURL} from 'node:url';
 
 export function createServer({key=process.env.ELEVENLABS_API_KEY,request=fetch}={}) {
+  key=typeof key==='string'?key.trim():'';
   let busy=false;
   return http.createServer(async(req,res)=>{
     const origin=req.headers.origin;
@@ -31,7 +32,23 @@ export function createServer({key=process.env.ELEVENLABS_API_KEY,request=fetch}=
       }
       const url=voices?'https://api.elevenlabs.io/v1/voices':`https://api.elevenlabs.io/v1/text-to-speech/${encodeURIComponent(payload.voice)}`;
       const upstream=await request(url,{method:voices?'GET':'POST',headers:{'xi-api-key':key,...(speech?{'Content-Type':'application/json',Accept:'audio/mpeg'}:{})},...(speech?{body:JSON.stringify({text:payload.text,model_id:'eleven_multilingual_v2',voice_settings:{stability:0.5,similarity_boost:0.75}})}:{}),signal:AbortSignal.timeout(60000)});
-      if(!upstream.ok){const messages={401:'Clé ElevenLabs refusée.',403:'Permission ElevenLabs manquante : accès aux voix et à Text to Speech requis.',429:'Quota ou limite ElevenLabs atteint.'};return send(upstream.status,messages[upstream.status]?{error:messages[upstream.status]}:{error:'ElevenLabs indisponible. Réessayez plus tard.'})}
+      if(!upstream.ok){
+        // Only known codes are exposed: upstream messages can contain private data.
+        const data=await upstream.json().catch(()=>null);
+        const reasons={
+          invalid_api_key:'La clé est invalide ou révoquée. Copiez une clé API active depuis votre compte ElevenLabs.',
+          missing_api_key:'ElevenLabs ne reçoit pas de clé API.',
+          missing_permissions:voices?'La clé ne permet pas de lister les voix. Activez Voices : Read dans ses permissions.':'La clé ne permet pas la génération audio. Activez Text to Speech dans ses permissions.',
+          insufficient_permissions:'Les permissions de cette clé sont insuffisantes. Vérifiez Voices : Read et Text to Speech.',
+          quota_exceeded:'Le quota ElevenLabs est épuisé. Vérifiez les crédits du compte.',
+          unusual_activity_detected:'ElevenLabs signale une activité inhabituelle. Vérifiez les restrictions du compte sur ElevenLabs.',
+          system_busy:'ElevenLabs est occupé. Réessayez plus tard.',
+        };
+        const code=Object.hasOwn(reasons,data?.detail?.status)?data.detail.status:null;
+        const fallback={401:'Authentification refusée par ElevenLabs. Vérifiez la clé et ses permissions dans votre compte.',403:'Accès refusé par ElevenLabs. Vérifiez les permissions et les restrictions du compte.',429:'Quota ou limite ElevenLabs atteint.'};
+        const error=code?reasons[code]:fallback[upstream.status]||'ElevenLabs indisponible. Réessayez plus tard.';
+        return send(upstream.status,{error:`${error} (HTTP ${upstream.status}${code?' · '+code:''})`});
+      }
       if(voices){const data=await upstream.json();return send(200,{voices:(data.voices||[]).map(v=>({voice_id:v.voice_id,name:v.name}))})}
       if(!upstream.headers.get('content-type')?.startsWith('audio/'))return send(502,{error:'Réponse audio ElevenLabs invalide.'});
       const audio=Buffer.from(await upstream.arrayBuffer());
