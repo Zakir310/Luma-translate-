@@ -29,3 +29,7 @@ LIMITES :
 
 VALIDATION : tests serveur et boutons de l’interface vérifiés avec une API simulée.
 Une génération réelle ElevenLabs n’a pas été validée faute de clé configurée de façon sécurisée.
+
+MISE À JOUR DIAGNOSTIC
+Le serveur vérifie maintenant les voix au démarrage et distingue les erreurs de clé et de permissions.
+Si Luma est déjà installé, remplacez uniquement le dossier serveur après avoir arrêté l’ancien serveur (Ctrl+C).

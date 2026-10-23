@@ -21,5 +21,12 @@ test('voices and speech use upstream API; key never sent to client',async()=>{
  });
 });
 test('quota errors are translated without upstream details',async()=>{
- await serve({key:'test-only',request:async()=>new Response('private details',{status:429})},async base=>{const r=await fetch(base+'/voices');assert.equal(r.status,429);assert.deepEqual(await r.json(),{error:'Quota ou limite ElevenLabs atteint.'})});
+ await serve({key:'test-only',request:async()=>new Response('private details',{status:429})},async base=>{const r=await fetch(base+'/voices');assert.equal(r.status,429);assert.deepEqual(await r.json(),{error:'Quota ou limite ElevenLabs atteint. (HTTP 429)'})});
+});
+test('401 permission and invalid key errors are distinguished without leaking messages',async()=>{
+ for(const [status,expected] of [['missing_permissions',/Voices : Read/],['invalid_api_key',/invalide ou révoquée/],['unknown_secret_value',/Authentification refusée/]]){
+  await serve({key:'test-only',request:async()=>Response.json({detail:{status,message:'private-secret-value'}},{status:401})},async base=>{
+   const r=await fetch(base+'/voices');assert.equal(r.status,401);const body=await r.text();assert.match(body,expected);assert.ok(!body.includes('private-secret-value'));assert.ok(!body.includes('unknown_secret_value'));
+  });
+ }
 });

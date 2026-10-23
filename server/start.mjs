@@ -17,6 +17,17 @@ if(!key){
   });
 }
 if(!key){console.error('Clé manquante. Relancez ce programme.');process.exit(1)}
+if(/\s/.test(key)||key.includes('=')||key.includes('"')||key.includes("'")){
+  console.error('Saisie incorrecte : collez uniquement la clé, sans commande, guillemets ni ELEVENLABS_API_KEY=.');process.exit(1);
+}
 const server=createServer({key});
 server.on('error',()=>{console.error('Le port 8787 est indisponible. Fermez l’autre serveur Luma avant de réessayer.');process.exitCode=1});
-server.listen(8787,'127.0.0.1',()=>console.log('Serveur Luma prêt. Gardez ce terminal ouvert, puis cliquez sur « Connecter et charger les voix » dans l’extension.'));
+server.listen(8787,'127.0.0.1',async()=>{
+  console.log('Serveur local démarré. Vérification de l’accès aux voix ElevenLabs…');
+  try{
+    const response=await fetch('http://127.0.0.1:8787/voices',{signal:AbortSignal.timeout(65000)});
+    const data=await response.json();
+    if(!response.ok){console.error(data.error);console.error('Après correction : Ctrl+C, puis node start.mjs pour saisir la clé à nouveau.');return}
+    console.log(`ElevenLabs connecté : ${data.voices.length} voix disponibles. Gardez ce terminal ouvert, puis connectez les voix dans Luma.`);
+  }catch{console.error('Vérification impossible. Réessayez depuis le bouton de connexion de Luma.')}
+});
