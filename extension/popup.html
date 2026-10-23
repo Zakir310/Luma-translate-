@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Luma · Les mots, sans les frontières</title><link rel="stylesheet" href="popup.css"><link rel="stylesheet" href="refinement.css"></head>
+<body>
+  <header><div class="brand"><div class="logo" aria-hidden="true">A↔</div><div><h1>Luma<span class="dot"></span></h1><p>Les mots, sans les frontières.</p></div></div><label class="switch"><input id="enabled" type="checkbox" role="switch" aria-label="Activer Luma"><span></span></label></header>
+  <main>
+    <div class="eyebrow"><span id="state">VOTRE PASSERELLE ENTRE LES LANGUES</span><span class="key">Alt + T</span></div>
+    <section class="card language-card" aria-label="Langues de traduction">
+      <div class="language-row"><div><small>DEPUIS</small><button id="source" class="language" aria-haspopup="dialog">Détection auto <span>⌄</span></button></div><button id="swap" class="swap" title="Inverser les langues" aria-label="Inverser les langues">⇄</button></div>
+      <div class="divider"></div>
+      <small>TRADUIRE VERS</small><button id="target" class="language" aria-haspopup="dialog">Français <span>⌄</span></button>
+    </section>
+    <p class="hint">Sélectionne un texte, puis clique sur <b>A↔</b>.<br>Une traduction, sans quitter ta page.</p>
+    <section class="card speech-card" aria-label="Lecture à voix haute">
+      <div class="section-title"><h2>Lecture à voix haute</h2><label class="speed-label">Vitesse <select id="read-rate" aria-label="Vitesse de lecture"><option value="0.8">0,8×</option><option value="0.9">0,9×</option><option value="0.95" selected>Doux · 0,95×</option><option value="1">1×</option><option value="1.2">1,2×</option><option value="1.5">1,5×</option></select></label></div>
+      <div class="speech-actions"><button id="read-selection" type="button">Lire la sélection</button><button id="read-page" type="button">Lire toute la page</button></div>
+      <p id="speech-status" class="page-status" role="status" aria-live="polite">Choisis le texte sélectionné ou toute la page.</p>
+      <div id="speech-controls" class="speech-controls" hidden><button id="speech-pause" type="button">Pause</button><button id="speech-stop" type="button">Arrêter</button><progress id="speech-progress" max="1" value="0" aria-label="Progression de la lecture"></progress></div>
+      <details class="voice-settings">
+        <summary>Personnaliser la voix</summary>
+        <label for="read-voice" class="voice-label">Voix de lecture</label>
+        <div class="voice-row"><select id="read-voice" aria-describedby="voice-hint"><option value="">Automatique</option></select><button id="speech-preview" type="button" title="Écouter un aperçu remplace la lecture en cours">Écouter</button><button id="refresh-voices" type="button" title="Actualiser les voix installées" aria-label="Actualiser les voix installées">↻</button></div>
+        <p id="voice-hint" class="page-status" role="status">Chargement des voix…</p>
+        <p class="voice-tip">Écouter un aperçu remplace la lecture en cours. La qualité dépend des voix installées. <a href="https://support.apple.com/fr-fr/guide/mac-help/mchlp2290/mac" target="_blank" rel="noopener noreferrer">Ajouter des voix sur Mac ↗</a></p>
+      </details>
+      <small class="page-privacy">Voix locales de l’ordinateur · Lit le texte affiché</small>
+    </section>
+    <section class="card page-card" aria-label="Traduction de la page entière">
+      <div class="section-title"><h2>Toute la page</h2><span id="page-target" class="page-target"></span></div>
+      <div class="page-actions"><button id="translate-page" type="button">Traduire cette page</button><button id="restore-page" type="button" hidden>Afficher l’original</button></div>
+      <label class="remember page-emphasis"><input id="page-bold" type="checkbox" checked> Afficher le texte traduit en gras</label>
+      <p id="page-status" class="page-status" role="status" aria-live="polite">Traduire le texte de l’onglet actuel.</p>
+      <progress id="page-progress" max="1" value="0" aria-label="Progression de la traduction" hidden></progress>
+      <small class="page-privacy">Le texte de cette page sera envoyé à Google.</small>
+    </section>
+    <div class="section-title"><h2>Dernières traductions</h2><button id="clear" class="text-button">Effacer</button></div>
+    <div id="history" class="history"></div>
+    <label class="remember"><input id="remember" type="checkbox"> Conserver les 3 dernières traductions</label>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+  </main>
+  <footer><span class="privacy-dot"></span>Traduction : texte envoyé à Google à la demande.<br><span class="muted">Service gratuit non officiel · Disponibilité variable</span></footer>
+  <dialog id="picker"><div class="picker-header"><h2 id="picker-title">Choisir une langue</h2><button id="close-picker" aria-label="Fermer">×</button></div><input id="search" type="search" placeholder="Rechercher une langue…" aria-label="Rechercher une langue" autocomplete="off"><div id="languages" class="options"></div></dialog>
+  <script type="module" src="popup.js"></script>
+</body></html>

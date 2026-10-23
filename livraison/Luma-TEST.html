@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Luma · Les mots, sans les frontières</title><style>:root{color-scheme:light;--bg:#fafafa;--card:#17171706;--line:#17171712;--muted:#696969;--purple:#696969}*{box-sizing:border-box}body{margin:0;width:370px;background:radial-gradient(ellipse at 95% 0%,#17171766,transparent 55%),var(--bg);color:#232323;font:13px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{color:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--purple);outline-offset:3px}button:disabled{opacity:.35;cursor:default}header{display:flex;align-items:center;justify-content:space-between;padding:24px 22px 20px}.brand{display:flex;gap:12px;align-items:center}.logo{display:grid;place-items:center;width:43px;height:43px;border:1px solid #17171730;border-radius:12px;background:linear-gradient(135deg,#696969,#ebebeb);font-weight:700;font-size:19px;box-shadow:0 5px 22px #17171730}h1{font-size:23px;letter-spacing:-1px;margin:0;line-height:1.2}.dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--purple);margin-left:3px}.brand p{font-size:10px;color:var(--muted);margin:5px 0 0}.switch{position:relative;width:38px;height:23px;flex-shrink:0}.switch input{opacity:0;width:100%;height:100%;margin:0;position:absolute;z-index:1;cursor:pointer}.switch span{display:block;background:#fafafa;border-radius:20px;height:100%;transition:background .2s}.switch span:after{content:"";position:absolute;left:3px;top:3px;width:17px;height:17px;background:white;border-radius:50%;transition:transform .2s}.switch input:checked+span{background:#696969}.switch input:checked+span:after{transform:translateX(15px)}.switch input:focus-visible+span{outline:2px solid white;outline-offset:4px}main{padding:0 22px}.eyebrow{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:1.5px;color:var(--purple);margin:0 0 12px}.key{letter-spacing:0;color:#696969;border:1px solid var(--line);padding:2px 7px;border-radius:5px;font-size:10px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 24px #17171711;backdrop-filter:blur(20px)}.language-card{padding:16px}.language-row{display:flex;align-items:center;justify-content:space-between}.language-row>div{flex:1}small{font-size:9px;letter-spacing:1.6px;color:var(--muted)}.language{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:5px 0 0;background:none;border:0;font-size:15px;font-weight:600;width:100%;text-align:left}.language span{color:var(--muted);font-size:14px}.swap{background:#17171713;border:1px solid #17171730;color:#232323;border-radius:10px;width:32px;height:32px;font-size:20px;margin-left:16px}.swap:hover{background:#17171730}.divider{height:1px;background:var(--line);margin:13px 0 11px}.hint{color:var(--muted);font-size:11px;margin:13px 0 23px;line-height:1.8}.hint b{color:#232323;background:#17171713;padding:2px 5px;border-radius:4px}.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}h2{font-size:12px;font-weight:600;margin:0}.text-button{background:none;border:0;padding:3px;color:var(--muted);font-size:10px}.text-button:hover{color:white}.history{display:grid;gap:7px}.empty{text-align:center;padding:21px 10px;border:1px dashed #17171718;border-radius:12px;color:var(--muted);font-size:11px}.entry{padding:11px 12px;border-radius:10px;background:#17171704;border:1px solid var(--line)}.entry-top{display:flex;justify-content:space-between;align-items:center;font-size:9px;color:var(--purple)}.entry p{margin:5px 0 0;font-size:12px;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.entry .original{color:var(--muted);font-size:10px;-webkit-line-clamp:1}.entry button{font-size:10px;border:0;background:transparent;color:var(--muted);padding:2px 0 2px 8px}.remember{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:10px;margin-top:15px}.remember input{accent-color:#696969;margin:0}.notice{font-size:11px;color:#232323;margin:6px 0;min-height:16px}footer{border-top:1px solid var(--line);padding:13px 22px 16px;font-size:9px;color:#696969;line-height:1.8}.privacy-dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:#696969;margin-right:5px}.muted{color:#696969}dialog{width:326px;max-height:480px;padding:16px;background:#fafafa;color:white;border:1px solid #17171720;border-radius:12px;box-shadow:0 16px 50px #17171788}dialog::backdrop{background:#171717bb;backdrop-filter:blur(5px)}.picker-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.picker-header button{border:0;background:none;color:var(--muted);font-size:22px}#search{width:100%;background:#17171708;border:1px solid #17171720;color:white;border-radius:8px;padding:10px;margin-bottom:10px}.options{max-height:315px;overflow:auto;display:grid;gap:3px}.option{border:0;border-radius:8px;background:none;color:#232323;padding:9px 10px;text-align:left}.option:hover,.option.selected{background:#17171719;color:#232323}.paused .dot{background:#696969}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Action de traduction complète, avec retour à l'original. */
+body { max-height: 600px; overflow-y: auto; }
+.page-card { padding: 13px; margin: 0 0 19px; }
+.page-card .section-title { margin-bottom: 11px; }
+.page-target { font-size: 10px; color: var(--purple); }
+.page-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.page-actions button { border-radius: 8px; padding: 8px 10px; font-size: 11px; }
+#translate-page { flex: 1; border: 1px solid #17171740; background: #17171725; color: #232323; }
+#translate-page:hover:not(:disabled) { background: #17171740; }
+#restore-page { border: 1px solid var(--line); background: #17171707; color: #232323; }
+#restore-page:hover:not(:disabled) { background: #17171712; }
+.page-status { color: var(--muted); font-size: 10px; margin: 9px 0 6px; overflow-wrap: anywhere; }
+.page-privacy { display: block; font-size: 9px; letter-spacing: 0; color: #696969; }
+#page-progress { display: block; width: 100%; height: 4px; margin: 9px 0; accent-color: var(--purple); border: 0; border-radius: 4px; overflow: hidden; }
+#page-progress::-webkit-progress-bar { background: #17171712; }
+#page-progress::-webkit-progress-value { background: var(--purple); }
+[hidden] { display: none !important; }
+.history { max-height: 220px; overflow: auto; }
+
+.speech-card { padding: 13px; margin: 0 0 19px; }
+.speech-card .section-title { margin-bottom: 11px; }
+.speed-label { display: flex; align-items: center; gap: 5px; font-size: 9px; color: var(--muted); }
+#read-rate { font: inherit; color: #232323; background: #fafafa; border: 1px solid #17171730; border-radius: 5px; padding: 3px 4px; }
+#read-rate:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+.speech-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.speech-actions button { border: 1px solid #17171735; border-radius: 8px; background: #17171713; color: #232323; padding: 9px 5px; font-size: 11px; }
+.speech-actions button:hover:not(:disabled) { background: #17171728; }
+.speech-controls { display: flex; align-items: center; gap: 7px; margin: 9px 0; }
+.speech-controls button { border: 1px solid var(--line); border-radius: 6px; background: #17171708; color: #232323; padding: 5px 9px; font-size: 10px; }
+.speech-controls button:hover:not(:disabled) { background: #17171718; }
+#speech-progress { min-width: 0; flex: 1; height: 4px; border: 0; border-radius: 4px; overflow: hidden; accent-color: #696969; }
+#speech-progress::-webkit-progress-bar { background: #17171712; }
+#speech-progress::-webkit-progress-value { background: #696969; }
+#speech-status { white-space: pre-line; }
+
+.voice-settings { border-top: 1px solid var(--line); margin: 11px 0; padding-top: 10px; }
+.voice-settings summary { color: #232323; font-size: 10px; cursor: pointer; }
+.voice-settings summary:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+.voice-label { display: block; margin: 9px 0 5px; font-size: 10px; color: var(--muted); }
+.voice-row { display: flex; align-items: center; gap: 5px; }
+#read-voice { min-width: 0; flex: 1; font: inherit; font-size: 10px; color: #232323; background: #fafafa; border: 1px solid #17171730; border-radius: 6px; padding: 7px 5px; }
+#read-voice:focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+.voice-row button { border: 1px solid #17171735; border-radius: 6px; background: #17171713; color: #232323; padding: 7px; font-size: 10px; }
+.voice-row button:hover:not(:disabled) { background: #17171728; }
+.voice-tip { color: var(--muted); font-size: 9px; line-height: 1.6; margin: 7px 0 0; }
+.voice-tip a { color: #232323; }
+
+:root{--bg:#fafafa;--card:#fff;--line:#e5e5e5;--muted:#666;--purple:#242424;color-scheme:light}
+body{width:390px;background:#fafafa;color:#171717;max-height:600px;font-size:13px}
+header{padding:26px 24px 22px;background:#fff;border-bottom:1px solid var(--line);margin-bottom:22px}
+.logo{background:#171717;color:#fff;border:0;box-shadow:none;border-radius:14px;width:44px;height:44px}
+h1{font-size:28px;font-weight:700;letter-spacing:-1.4px}.brand p{font-size:11px;color:#666}.dot{background:#171717}
+main{padding:0 24px}.eyebrow{color:#666;letter-spacing:1px;font-size:9px}.key{color:#666;background:#fff}
+.switch span{background:#d6d6d6}.switch input:checked+span{background:#171717}.switch input:focus-visible+span{outline-color:#333}
+.card{background:#fff;border-color:#e2e2e2;border-radius:16px;box-shadow:0 3px 12px #00000003;backdrop-filter:none}
+.language-card{padding:20px}.language{font-size:17px;color:#171717;padding-top:7px}.language-card small{font-size:9px;letter-spacing:1.3px}
+.swap{background:#f5f5f5;color:#171717;border:1px solid #e2e2e2;border-radius:50%;width:36px;height:36px}.swap:hover{background:#eee}
+.divider{margin:17px 0}.hint{font-size:11px;color:#666;line-height:1.8;margin:16px 2px 22px}.hint b{color:#171717;background:#eee}
+.speech-card,.page-card{padding:17px;margin-bottom:16px}h2{font-size:13px}.section-title{gap:8px}.speed-label{color:#666}
+select,#read-rate,#read-voice{background:#fafafa;color:#252525;border:1px solid #ddd;border-radius:7px}
+.speech-actions button,.voice-row button,.speech-controls button,#restore-page{background:#fff;color:#252525;border:1px solid #ddd;border-radius:9px;min-height:35px}
+.speech-actions button:hover:not(:disabled),.voice-row button:hover:not(:disabled),.speech-controls button:hover:not(:disabled),#restore-page:hover:not(:disabled){background:#f0f0f0}
+#translate-page{color:#fff;background:#171717;border:1px solid #171717;min-height:39px;font-weight:600}#translate-page:hover:not(:disabled){background:#333}
+.voice-settings summary,.voice-tip a{color:#333}.voice-settings{margin-bottom:12px}.page-status{font-size:11px;line-height:1.6;color:#666}.page-privacy{color:#777;line-height:1.6}.remember{color:#666;font-size:11px;line-height:1.5}.remember input{accent-color:#171717}
+.entry{background:#fff;border-color:#e5e5e5;border-radius:12px;padding:13px}.entry-top{color:#666}.empty{border-color:#ddd;background:#fff;padding:24px 14px;color:#777}.notice{color:#333}.text-button:hover{color:#171717}
+footer{color:#666;background:#fff;padding:16px 24px;font-size:10px}.muted{color:#777}.privacy-dot{background:#444}
+dialog{color:#171717;background:white;border-color:#ddd;border-radius:18px;box-shadow:0 20px 80px #0002}dialog::backdrop{background:#0004;backdrop-filter:blur(3px)}#search{background:#fafafa;color:#171717;border-color:#ddd}.option{color:#333;min-height:40px}.option:hover,.option.selected{background:#f0f0f0;color:#171717}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #333;outline-offset:3px}
+button:disabled{opacity:.45}.paused .dot{background:#aaa}
+@media(max-width:390px){body{width:100%}header{padding:22px 18px}main{padding:0 18px}}
+
+body.web-preview{margin:32px auto;width:min(390px,100%);max-height:none;overflow:visible;border:1px solid #e4e4e4;border-radius:22px;box-shadow:0 20px 90px #0000000a}
+html{background:#f0f0f0}.preview-banner{font-size:10px;line-height:1.7;padding:14px 24px;border-bottom:1px solid #e5e5e5;color:#666;background:#fff;border-radius:22px 22px 0 0;letter-spacing:.3px}.web-preview footer{border-radius:0 0 22px 22px}
+@media(max-width:430px){body.web-preview{margin:0 auto;border:0;border-radius:0}.preview-banner{border-radius:0}}
+
+.test-zone{margin:0 24px 22px;padding:16px;background:white;border:1px solid #ddd;border-radius:14px}.test-zone textarea{width:100%;min-height:85px;border:1px solid #ddd;border-radius:8px;padding:10px;color:#171717;background:white;font:inherit;resize:vertical}.test-zone button{color:white;background:#171717;border:0;border-radius:8px;padding:10px 15px;margin-top:8px}.test-zone p{font-size:11px;color:#666}.test-zone output{display:block;margin-top:14px;white-space:pre-wrap;color:#171717}.test-zone select{width:100%;padding:8px;margin:8px 0}</style></head>
+<body>
+  <header><div class="brand"><div class="logo" aria-hidden="true">A↔</div><div><h1>Luma<span class="dot"></span></h1><p>Les mots, sans les frontières.</p></div></div><label class="switch"><input id="enabled" type="checkbox" role="switch" aria-label="Activer Luma"><span></span></label></header>
+<section class="test-zone"><h2>Essai immédiat · sans installation</h2><p>Choisissez une phrase pour tester la traduction locale d’exemple. Ce test n’appelle ni Google ni ElevenLabs.</p><select id="demo-pick" aria-label="Phrase d’exemple"><option>Bonjour, comment allez-vous ?</option><option>Merci</option><option>Au revoir</option></select><button id="demo-go">Traduire en anglais</button><output id="demo-result" aria-live="polite">Le résultat apparaîtra ici.</output><p>Les réglages ci-dessous présentent votre véritable extension. Pour traduire des pages web, installez le ZIP décompressé dans Chrome.</p></section>  <main>
+    <div class="eyebrow"><span id="state">VOTRE PASSERELLE ENTRE LES LANGUES</span><span class="key">Alt + T</span></div>
+    <section class="card language-card" aria-label="Langues de traduction">
+      <div class="language-row"><div><small>DEPUIS</small><button id="source" class="language" aria-haspopup="dialog">Détection auto <span>⌄</span></button></div><button id="swap" class="swap" title="Inverser les langues" aria-label="Inverser les langues">⇄</button></div>
+      <div class="divider"></div>
+      <small>TRADUIRE VERS</small><button id="target" class="language" aria-haspopup="dialog">Français <span>⌄</span></button>
+    </section>
+    <p class="hint">Sélectionne un texte, puis clique sur <b>A↔</b>.<br>Une traduction, sans quitter ta page.</p>
+    <section class="card speech-card" aria-label="Lecture à voix haute">
+      <div class="section-title"><h2>Lecture à voix haute</h2><label class="speed-label">Vitesse <select id="read-rate" aria-label="Vitesse de lecture"><option value="0.8">0,8×</option><option value="0.9">0,9×</option><option value="0.95" selected>Doux · 0,95×</option><option value="1">1×</option><option value="1.2">1,2×</option><option value="1.5">1,5×</option></select></label></div>
+      <div class="speech-actions"><button id="read-selection" type="button">Lire la sélection</button><button id="read-page" type="button">Lire toute la page</button></div>
+      <p id="speech-status" class="page-status" role="status" aria-live="polite">Choisis le texte sélectionné ou toute la page.</p>
+      <div id="speech-controls" class="speech-controls" hidden><button id="speech-pause" type="button">Pause</button><button id="speech-stop" type="button">Arrêter</button><progress id="speech-progress" max="1" value="0" aria-label="Progression de la lecture"></progress></div>
+      <details class="voice-settings">
+        <summary>Personnaliser la voix</summary>
+        <label for="read-voice" class="voice-label">Voix de lecture</label>
+        <div class="voice-row"><select id="read-voice" aria-describedby="voice-hint"><option value="">Automatique</option></select><button id="speech-preview" type="button" title="Écouter un aperçu remplace la lecture en cours">Écouter</button><button id="refresh-voices" type="button" title="Actualiser les voix installées" aria-label="Actualiser les voix installées">↻</button></div>
+        <p id="voice-hint" class="page-status" role="status">Chargement des voix…</p>
+        <p class="voice-tip">Écouter un aperçu remplace la lecture en cours. La qualité dépend des voix installées. <a href="https://support.apple.com/fr-fr/guide/mac-help/mchlp2290/mac" target="_blank" rel="noopener noreferrer">Ajouter des voix sur Mac ↗</a></p>
+      </details>
+      <small class="page-privacy">Voix locales de l’ordinateur · Lit le texte affiché</small>
+    </section>
+    <section class="card page-card" aria-label="Traduction de la page entière">
+      <div class="section-title"><h2>Toute la page</h2><span id="page-target" class="page-target"></span></div>
+      <div class="page-actions"><button id="translate-page" type="button">Traduire cette page</button><button id="restore-page" type="button" hidden>Afficher l’original</button></div>
+      <label class="remember page-emphasis"><input id="page-bold" type="checkbox" checked> Afficher le texte traduit en gras</label>
+      <p id="page-status" class="page-status" role="status" aria-live="polite">Traduire le texte de l’onglet actuel.</p>
+      <progress id="page-progress" max="1" value="0" aria-label="Progression de la traduction" hidden></progress>
+      <small class="page-privacy">Le texte de cette page sera envoyé à Google.</small>
+    </section>
+    <div class="section-title"><h2>Dernières traductions</h2><button id="clear" class="text-button">Effacer</button></div>
+    <div id="history" class="history"></div>
+    <label class="remember"><input id="remember" type="checkbox"> Conserver les 3 dernières traductions</label>
+    <p id="notice" class="notice" role="status" aria-live="polite"></p>
+  </main>
+  <footer><span class="privacy-dot"></span>Traduction : texte envoyé à Google à la demande.<br><span class="muted">Service gratuit non officiel · Disponibilité variable</span></footer>
+  <dialog id="picker"><div class="picker-header"><h2 id="picker-title">Choisir une langue</h2><button id="close-picker" aria-label="Fermer">×</button></div><input id="search" type="search" placeholder="Rechercher une langue…" aria-label="Rechercher une langue" autocomplete="off"><div id="languages" class="options"></div></dialog>
+  <script>
+(()=>{
+const LANGUAGES = [
+  ['fr','Français','🇫🇷'],['en','Anglais','🇬🇧'],['es','Espagnol','🇪🇸'],
+  ['de','Allemand','🇩🇪'],['it','Italien','🇮🇹'],['pt','Portugais','🇵🇹'],
+  ['ar','Arabe','🇸🇦'],['az','Azerbaïdjanais','🇦🇿'],['tr','Turc','🇹🇷'],
+  ['ru','Russe','🇷🇺'],['uk','Ukrainien','🇺🇦'],['ja','Japonais','🇯🇵'],
+  ['ko','Coréen','🇰🇷'],['zh-CN','Chinois simplifié','🇨🇳'],['nl','Néerlandais','🇳🇱'],
+  ['pl','Polonais','🇵🇱'],['ro','Roumain','🇷🇴'],['el','Grec','🇬🇷'],
+  ['sv','Suédois','🇸🇪'],['hi','Hindi','🇮🇳'],['vi','Vietnamien','🇻🇳'],
+  ['id','Indonésien','🇮🇩'],['th','Thaï','🇹🇭'],['he','Hébreu','🇮🇱'],['fa','Persan','🇮🇷']
+];
+const DEFAULTS = {enabled:true, source:'auto', target:'fr', historyEnabled:true, pageBold:true, readRate:0.95, readVoice:null};
+const MAX_TEXT = 4000;
+const isLanguage = code => LANGUAGES.some(([id]) => id === code);
+const languageName = code => code === 'auto' ? 'Détection auto' : LANGUAGES.find(([id])=>id===code)?.[1] || code;
+function normalizeSettings(value) {
+  return {enabled: value.enabled !== false, source: value.source === 'auto' || isLanguage(value.source) ? value.source : 'auto',
+    target:isLanguage(value.target) ? value.target : 'fr', historyEnabled:value.historyEnabled !== false, pageBold:value.pageBold !== false,
+    readRate:[0.8,0.9,0.95,1,1.2,1.5].includes(value.readRate) ? value.readRate : DEFAULTS.readRate,
+    readVoice:value.readVoice && typeof value.readVoice.voiceName==='string' && value.readVoice.voiceName.trim() && value.readVoice.voiceName.length<=200 &&
+      typeof value.readVoice.lang==='string' && (value.readVoice.lang==='' || /^[a-z]{2,3}(?:-[a-zA-Z0-9]{2,8})*$/.test(value.readVoice.lang))?
+      {voiceName:value.readVoice.voiceName,lang:value.readVoice.lang}:null};
+}
+
+// Fonctions pures : aucune requête réseau, aucune dépendance au DOM ou à Chrome.
+const MAX_SPEECH_CHUNK = 24000; // Marge sous les 32 768 caractères de chrome.tts.
+const baseLanguage = language => (language || '').toLowerCase().split('-')[0];
+const voiceKey = voice => JSON.stringify([voice.lang || '',voice.voiceName]);
+
+function voiceQuality(voice) {
+  const name=voice.voiceName.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  if (/premium|neural|natural|naturelle|\bhq\b/.test(name)) return {score:100,label:'Qualité supérieure annoncée'};
+  if (/enhanced|amelioree?|superieure|\bsiri\b/.test(name)) return {score:70,label:'Voix améliorée annoncée'};
+  if (/compact|espeak|microsoft sam|fred|trinoids|bad news|good news|bells|bubbles|whisper|zarvox|boing/.test(name)) return {score:-50,label:''};
+  return {score:0,label:''};
+}
+function localVoices(all) {
+  const seen=new Set();
+  return all.filter(voice=>!voice.remote && !voice.extensionId && typeof voice.voiceName==='string' && voice.voiceName.trim() &&
+      (!Array.isArray(voice.eventTypes) || voice.eventTypes.includes('end')))
+    .filter(voice=>{const key=voiceKey(voice);if(seen.has(key))return false;seen.add(key);return true;});
+}
+function rank(voices,language,uiLanguage) {
+  const desired=language.toLowerCase(),ui=uiLanguage.toLowerCase();
+  return [...voices].sort((a,b)=>{
+    const score=voice=>voiceQuality(voice).score + ((voice.lang || '').toLowerCase()===desired?15:0) +
+      ((voice.lang || '').toLowerCase()===ui?5:0);
+    return score(b)-score(a) || a.voiceName.localeCompare(b.voiceName);
+  });
+}
+function chooseVoice(voices,language,preferred,uiLanguage) {
+  const compatible=voices.filter(voice=>baseLanguage(voice.lang)===baseLanguage(language));
+  const preferenceApplies=preferred && (!preferred.lang || baseLanguage(preferred.lang)===baseLanguage(language));
+  const selected=preferenceApplies && voices.find(voice=>voiceKey(voice)===voiceKey(preferred));
+  const fallback=voices.filter(voice=>baseLanguage(voice.lang)===baseLanguage(uiLanguage));
+  const voice=selected || rank(compatible.length?compatible:fallback.length?fallback:voices,language,uiLanguage)[0];
+  return {voice,fallback:baseLanguage(voice.lang)!==baseLanguage(language),
+    voiceNotice:preferenceApplies && !selected?'La voix choisie n’est pas disponible ici ; choix automatique.':''};
+}
+function listVoices(voices,uiLanguage) {
+  return rank(voices,uiLanguage,uiLanguage).map(voice=>({key:voiceKey(voice),voiceName:voice.voiceName,lang:voice.lang || '',qualityLabel:voiceQuality(voice).label}));
+}
+function prepareSpeechText(text) {
+  return text.replace(/\r\n?/g,'\n').replace(/[\u00AD\u200B\uFEFF]/g,'')
+    .replace(/[\u00A0\u202F]/g,' ').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g,'')
+    .replace(/[ \t]+/g,' ').replace(/ *\n */g,'\n').replace(/\n{3,}/g,'\n\n').trim();
+}
+function splitForSpeech(text,language) {
+  const chunks=[],ends=[];let offset=0;
+  try {
+    for(const segment of new Intl.Segmenter(language,{granularity:'sentence'}).segment(text)) ends.push(segment.index+segment.segment.length);
+  } catch {
+    for(const match of text.matchAll(/[.!?。！？]["'’”»\])]*(?:\s+|$)/g)) ends.push(match.index+match[0].length);
+  }
+  while(offset<text.length) {
+    let end=Math.min(offset+MAX_SPEECH_CHUNK,text.length);
+    if(end<text.length) {
+      const minimum=offset+MAX_SPEECH_CHUNK/2;
+      let sentence=0;
+      for(const boundary of ends) {if(boundary>end)break;if(boundary>minimum)sentence=boundary;}
+      if(sentence) end=sentence;
+      else {
+        const paragraph=text.lastIndexOf('\n\n',end),space=text.lastIndexOf(' ',end);
+        if(paragraph>minimum)end=paragraph+2;
+        else if(space>minimum)end=space+1;
+      }
+      // Ne pas séparer les deux unités UTF-16 d'un emoji lors d'un repli forcé.
+      const last=text.charCodeAt(end-1);if(last>=0xD800 && last<=0xDBFF)end--;
+    }
+    const part=text.slice(offset,end).trim();if(part)chunks.push(part);offset=end;
+  }
+  return chunks;
+}
+
+const previews={
+  fr:'Bonjour ! Prends un instant pour écouter cette voix. Je lis les phrases tranquillement, en respectant les pauses et la ponctuation.',
+  en:'Hello! Take a moment to listen to this voice. I read at a gentle pace, with natural pauses between sentences.',
+  es:'¡Hola! Escucha esta voz un momento. Leo con calma, respetando las pausas y la puntuación.',
+  de:'Hallo! Höre dir diese Stimme kurz an. Ich lese ruhig und beachte die Pausen zwischen den Sätzen.',
+  it:'Ciao! Ascolta questa voce per un momento. Leggo con calma, rispettando le pause e la punteggiatura.',
+  pt:'Olá! Escuta esta voz por um momento. Leio com calma, respeitando as pausas e a pontuação.',
+  ar:'مرحباً! استمع إلى هذا الصوت للحظة. أقرأ بهدوء، مع احترام الوقفات وعلامات الترقيم.',
+  az:'Salam! Bu səsi bir an dinlə. Cümlələri sakit şəkildə, fasilələrə və durğu işarələrinə riayət edərək oxuyuram.',
+  tr:'Merhaba! Bir an bu sesi dinle. Cümleleri sakin bir şekilde, duraklamalara ve noktalama işaretlerine dikkat ederek okuyorum.',
+  ru:'Здравствуйте! Послушайте этот голос. Я читаю спокойно, соблюдая паузы и знаки препинания.',
+  uk:'Вітаю! Послухайте цей голос. Я читаю спокійно, дотримуючись пауз і розділових знаків.',
+  ja:'こんにちは。この声を少し聞いてみてください。句読点に合わせて、ゆっくりと読み上げます。',
+  ko:'안녕하세요! 잠시 이 목소리를 들어 보세요. 문장 사이에 자연스럽게 쉬면서 차분하게 읽습니다.',
+  zh:'你好！请听一听这个声音。我会平静地朗读，并根据标点符号自然停顿。',
+  nl:'Hallo! Luister even naar deze stem. Ik lees rustig, met natuurlijke pauzes tussen de zinnen.',
+  pl:'Cześć! Posłuchaj przez chwilę tego głosu. Czytam spokojnie, zachowując pauzy między zdaniami.',
+  ro:'Bună! Ascultă această voce pentru un moment. Citesc liniștit, respectând pauzele și semnele de punctuație.',
+  el:'Γεια σας! Ακούστε για λίγο αυτή τη φωνή. Διαβάζω ήρεμα, με φυσικές παύσεις ανάμεσα στις προτάσεις.',
+  sv:'Hej! Lyssna på den här rösten en stund. Jag läser lugnt, med naturliga pauser mellan meningarna.',
+  hi:'नमस्ते! कुछ क्षण इस आवाज़ को सुनिए। मैं वाक्यों के बीच स्वाभाविक विराम के साथ धीरे और शांति से पढ़ता हूँ।',
+  vi:'Xin chào! Hãy nghe thử giọng nói này. Tôi đọc chậm rãi, với những khoảng nghỉ tự nhiên giữa các câu.',
+  id:'Halo! Dengarkan suara ini sejenak. Saya membaca dengan tenang, dengan jeda alami di antara kalimat.',
+  th:'สวัสดี! ลองฟังเสียงนี้สักครู่ ฉันอ่านอย่างนุ่มนวลและเว้นจังหวะตามเครื่องหมายวรรคตอน',
+  he:'שלום! הקשיבו לרגע לקול הזה. אני קורא בנחת, עם הפסקות טבעיות בין המשפטים.',
+  fa:'سلام! لحظه‌ای به این صدا گوش کنید. جمله‌ها را آرام و با مکث‌های طبیعی می‌خوانم.'
+};
+function previewText(language,uiLanguage) {
+  const key=baseLanguage(language);
+  // Même une langue hors catalogue peut échantillonner sa voix avec des chiffres.
+  return previews[key]?{text:previews[key],language}:{text:'1, 2, 3. 4, 5, 6.',language:language || uiLanguage};
+}
+
+// Browser-only adapter. Never included by the Chrome extension popup.
+const listeners=[];
+let stored={};
+try{stored=JSON.parse(localStorage.getItem('luma-preview')||'{}')}catch{}
+let history=[];
+const inactive={ok:true,active:false,total:0,completed:0};
+window.chrome={
+ storage:{sync:{async get(defaults){return {...defaults,...stored}},async set(patch){const changes=Object.fromEntries(Object.entries(patch).map(([k,v])=>[k,{newValue:v}]));stored={...stored,...patch};try{localStorage.setItem('luma-preview',JSON.stringify(stored))}catch{}listeners.forEach(fn=>fn(changes,'sync'))}},onChanged:{addListener(fn){listeners.push(fn)}}},
+ tabs:{async query(){return []}},
+ runtime:{async sendMessage(message){switch(message.type){
+ case 'GET_HISTORY':return {ok:true,history};
+ case 'CLEAR_HISTORY':history=[];return {ok:true};
+ case 'SPEECH_VOICES':return {ok:true,voices:[]};
+ case 'SPEECH_STATUS':return inactive;
+ default:return {ok:false,error:'Cette action nécessite l’extension Chrome installée.'};
+ }}}
+};
+document.body.classList.add('web-preview');
+const banner=document.createElement('aside');banner.className='preview-banner';banner.textContent='LUMA · FICHIER DE TEST AUTONOME · Aucun serveur nécessaire';document.body.prepend(banner);
+
+
+const $ = id => document.getElementById(id);
+let prefs, choosing = 'target', lastDetected = 'en', saving = Promise.resolve();
+let activeTabId, pageState = null, pageAction = false, pageSupported = true;
+let speechState = null, speechAction = false;
+let voiceCatalog=null,voicesLoading=false,voiceError='';
+function notice(text){$('notice').textContent=text;}
+function label(code){const lang=LANGUAGES.find(([id])=>id===code);return lang ? `${lang[2]}  ${lang[1]}` : '✦  Détection auto';}
+function renderPrefs(){
+  $('enabled').checked=prefs.enabled; $('remember').checked=prefs.historyEnabled;
+  $('page-bold').checked=prefs.pageBold;
+  $('read-rate').value=String(prefs.readRate);
+  $('state').textContent=prefs.enabled?'PRÊTE À TRADUIRE':'EN PAUSE';
+  document.body.classList.toggle('paused',!prefs.enabled);
+  for(const key of ['source','target']){
+    $(key).replaceChildren(document.createTextNode(label(prefs[key])));
+    const arrow=document.createElement('span');arrow.textContent='⌄';$(key).append(arrow);
+  }
+  renderPage();
+  renderVoicePicker();
+  renderSpeech();
+}
+function renderVoicePicker(){
+  const picker=$('read-voice');picker.replaceChildren();
+  const automatic=document.createElement('option');automatic.value='';automatic.textContent='Automatique · voix améliorées en priorité';picker.append(automatic);
+  for(const voice of voiceCatalog || []){
+    const option=document.createElement('option');option.value=voice.key;
+    option.textContent=`${voice.voiceName} · ${voice.lang || 'langue non précisée'}${voice.qualityLabel?' · '+voice.qualityLabel:''}`;
+    picker.append(option);
+  }
+  const chosen=prefs.readVoice;
+  if(chosen && voiceCatalog && !voiceCatalog.some(voice=>voice.key===voiceKey(chosen))){
+    const missing=document.createElement('option');missing.value=voiceKey(chosen);missing.disabled=true;
+    missing.textContent=`${chosen.voiceName} · indisponible ici (choix auto)`;picker.append(missing);
+  }
+  picker.value=chosen?voiceKey(chosen):'';
+  $('voice-hint').textContent=voiceError || (voicesLoading || !voiceCatalog?'Chargement des voix…':
+    !voiceCatalog.length?'Aucune voix locale disponible. Ajoute une voix dans les réglages de ton ordinateur.':
+    chosen?(chosen.lang?`Choix mémorisé pour ${LANGUAGES.find(([code])=>baseLanguage(code)===baseLanguage(chosen.lang))?.[1] || chosen.lang}. Les autres langues restent automatiques.`:
+      'Voix mémorisée. Sa langue n’est pas précisée par le système.'):
+    'La langue du texte est détectée automatiquement. Choisis une voix et écoute un aperçu pour comparer.');
+}
+async function refreshVoices(){
+  if(voicesLoading)return;
+  voicesLoading=true;voiceError='';renderVoicePicker();renderSpeech();
+  try{
+    const response=await chrome.runtime.sendMessage({type:'SPEECH_VOICES'});
+    if(!response?.ok || !Array.isArray(response.voices))throw new Error(response?.error || 'Voix indisponibles. Recharge Luma.');
+    voiceCatalog=response.voices;
+  }catch(problem){voiceError=problem.message || 'Impossible de charger les voix.';voiceCatalog ||= [];}
+  finally{voicesLoading=false;renderVoicePicker();renderSpeech();}
+}
+function renderSpeech(){
+  $('read-selection').disabled=$('read-page').disabled=speechAction || !prefs.enabled || !pageSupported;
+  $('speech-controls').hidden=!speechState?.active;
+  $('speech-pause').disabled=$('speech-stop').disabled=speechAction;
+  $('speech-pause').textContent=speechState?.paused?'Reprendre':'Pause';
+  $('speech-preview').disabled=speechAction || !prefs.enabled || voicesLoading || !voiceCatalog?.length;
+  $('read-voice').disabled=speechAction || voicesLoading || !voiceCatalog?.length;
+  $('refresh-voices').disabled=speechAction || voicesLoading;
+  $('speech-progress').max=Math.max(1,speechState?.characters || speechState?.total || 0);
+  $('speech-progress').value=speechState?.characters?speechState.spoken || 0:speechState?.completed || 0;
+  if(speechAction)$('speech-status').textContent='Préparation de la lecture…';
+  else if(speechState?.error)$('speech-status').textContent=speechState.error;
+  else if(speechState?.active){
+    const mode=speechState.mode==='preview'?'Aperçu de la voix':speechState.mode==='selection'?'Lecture de la sélection':'Lecture de la page';
+    const owner=speechState.tabId!=null && speechState.tabId!==activeTabId?' · autre onglet':'';
+    const progress=speechState.characters?`${Math.min(100,Math.round(100*(speechState.spoken || 0)/speechState.characters))} %`:`${speechState.completed+1} / ${speechState.total} passages`;
+    $('speech-status').textContent=`${speechState.paused?'En pause':mode}${owner} · ${progress}`;
+    $('speech-status').textContent+=`\nVoix : ${speechState.voice}${speechState.fallback?' (voix de remplacement)':''}`;
+    if(speechState.voiceNotice)$('speech-status').textContent+='\n'+speechState.voiceNotice;
+  }else if(speechState?.total && speechState.completed>=speechState.total)$('speech-status').textContent=speechState.mode==='preview'?'Aperçu terminé.':'Lecture terminée.';
+  else if(!prefs.enabled)$('speech-status').textContent='Active Luma pour écouter un texte.';
+  else if(!pageSupported)$('speech-status').textContent='Ouvre une page web pour choisir un texte à lire.';
+  else $('speech-status').textContent='Choisis le texte sélectionné ou toute la page.';
+}
+async function refreshSpeech(){
+  if(speechAction)return;
+  try{const response=await chrome.runtime.sendMessage({type:'SPEECH_STATUS'});if(response?.ok){speechState=response;renderSpeech();}}
+  catch{ /* Le prochain clic affichera l'erreur si le service vient d'être rechargé. */ }
+}
+async function speechClick(type,mode){
+  if(speechAction)return;
+  speechAction=true;renderSpeech();
+  try{
+    await saving;
+    const response=await chrome.runtime.sendMessage({type,mode,tabId:activeTabId});
+    if(!response?.ok)throw new Error(response?.error || 'Impossible de lancer la lecture.');
+    speechState=response;
+  }catch(problem){speechState={...speechState,error:problem.message || 'Lecture impossible.'};}
+  finally{speechAction=false;renderSpeech();}
+}
+function renderPage(){
+  $('page-target').textContent=languageName(prefs.target);
+  $('translate-page').disabled=pageAction || !prefs.enabled || !pageSupported;
+  const sameTarget=pageState?.target===prefs.target && pageState?.source===prefs.source;
+  const running=pageState?.active && sameTarget && !pageState.error && pageState.busy;
+  const complete=pageState?.active && sameTarget && !pageState.error && !pageState.busy && pageState.translated>0 && !pageState.remaining;
+  $('translate-page').textContent=pageAction?'Un instant…':pageState?.error?'Réessayer':running?'Traduction en cours…':complete?'Page traduite':'Traduire cette page';
+  if(running || complete)$('translate-page').disabled=true;
+  $('restore-page').hidden=!pageState?.active;
+  $('restore-page').disabled=pageAction;
+  $('page-progress').hidden=!pageState?.busy;
+  $('page-progress').max=Math.max(1,pageState?.total || 0);
+  $('page-progress').value=pageState?.translated || 0;
+  if(!pageSupported)$('page-status').textContent='Ouvre une page web HTTP ou HTTPS pour utiliser ce bouton.';
+  else if(!prefs.enabled)$('page-status').textContent='Active Luma pour traduire cette page.';
+  else if(pageState?.error)$('page-status').textContent=pageState.error;
+  else if(pageState?.active){
+    const count=pageState.translated || 0;
+    const language=languageName(pageState.target);
+    $('page-status').textContent=pageState.busy?`Traduction vers ${language}… ${count} / ${pageState.total} blocs`:
+      count?`Le texte de la page est remplacé en ${language} · ${count} blocs.`:'Aucun texte lisible détecté. Essaie de recharger la page ou de relancer la traduction.';
+    if(!sameTarget)$('page-status').textContent+=' Clique sur « Traduire cette page » pour appliquer les langues choisies.';
+  }else $('page-status').textContent='Traduire le texte de l’onglet actuel.';
+}
+async function pageMessage(type,inject=false){
+  if(!activeTabId)throw new Error('Ouvre une page web pour utiliser ce bouton.');
+  try{return await chrome.tabs.sendMessage(activeTabId,{type},{frameId:0});}
+  catch(problem){
+    if(!inject)throw problem;
+    await chrome.scripting.executeScript({target:{tabId:activeTabId},files:['content.js','page.js']});
+    return chrome.tabs.sendMessage(activeTabId,{type},{frameId:0});
+  }
+}
+async function refreshPage(){
+  if(!activeTabId || pageAction || !pageSupported)return;
+  try{const state=await pageMessage('PAGE_STATUS');if(state?.ok){pageState=state;renderPage();}}
+  catch{pageState=null;renderPage(); /* Le prochain clic réinjectera les scripts si l'onglet a navigué. */}
+}
+async function pageClick(type){
+  if(pageAction)return;
+  pageAction=true;renderPage();
+  try{
+    await saving;
+    const response=await pageMessage(type,true);
+    if(!response?.ok)throw new Error(response?.error || 'Impossible de communiquer avec la page.');
+    pageState=response;
+    if(type==='PAGE_RESTORE')notice('Texte original rétabli.');
+  }catch(problem){
+    pageState={...pageState,error:problem.message.includes('Cannot access')?'Chrome interdit la traduction sur cette page.':problem.message};
+  }finally{pageAction=false;renderPage();}
+}
+function save(patch){
+  prefs={...prefs,...patch};renderPrefs();
+  saving=saving.then(()=>chrome.storage.sync.set(patch)).catch(()=>notice('Préférences non enregistrées. Réessayez.'));
+  return saving;
+}
+function listLanguages(){
+  const fold=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const query=fold($('search').value);
+  const entries=choosing==='source'?[['auto','Détection auto','✦'],...LANGUAGES]:LANGUAGES;
+  $('languages').replaceChildren();
+  for(const [code,name,flag] of entries.filter(([code,name])=>fold(name+' '+code).includes(query))){
+    const button=document.createElement('button');button.className='option';button.type='button';
+    button.textContent=`${flag}  ${name}${prefs[choosing]===code?'  ✓':''}`;
+    button.classList.toggle('selected',prefs[choosing]===code);
+    button.addEventListener('click',()=>{save({[choosing]:code});$('picker').close();});
+    $('languages').append(button);
+  }
+  if(!$('languages').childElementCount){const empty=document.createElement('p');empty.textContent='Aucune langue trouvée.';$('languages').append(empty);}
+}
+async function renderHistory(){
+  const response=await chrome.runtime.sendMessage({type:'GET_HISTORY'});
+  if(!response?.ok)throw new Error('Historique indisponible.');
+  const history=response.history || []; $('history').replaceChildren();$('clear').disabled=!history.length;
+  if(isLanguage(history[0]?.detected))lastDetected=history[0].detected;
+  if(!history.length){const empty=document.createElement('div');empty.className='empty';empty.textContent='Tes prochaines traductions apparaîtront ici.';$('history').append(empty);}
+  for(const item of history){
+    const article=document.createElement('article');article.className='entry';
+    const top=document.createElement('div');top.className='entry-top';
+    const pair=document.createElement('span');pair.textContent=`${languageName(item.detected)} → ${languageName(item.target)}`;
+    const button=document.createElement('button');button.textContent='Copier';button.setAttribute('aria-label','Copier la traduction');
+    button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(item.translated);button.textContent='✓ Copié';setTimeout(()=>button.textContent='Copier',1500);}catch{notice('Copie refusée par le navigateur.');}});
+    top.append(pair,button);
+    const original=document.createElement('p');original.className='original';original.dir='auto';original.textContent=item.original;original.title=item.original;
+    const result=document.createElement('p');result.dir='auto';result.textContent=item.translated;result.title=item.translated;
+    article.append(top,original,result);$('history').append(article);
+  }
+}
+async function init(){
+  prefs=normalizeSettings(await chrome.storage.sync.get(DEFAULTS));renderPrefs();await renderHistory();
+  const [tab]=await chrome.tabs.query({active:true,currentWindow:true});
+  activeTabId=tab?.id;
+  pageSupported=!!activeTabId && /^https?:/.test(tab?.url || '');
+  $('translate-page').addEventListener('click',()=>pageClick('PAGE_START'));
+  $('restore-page').addEventListener('click',()=>pageClick('PAGE_RESTORE'));
+  $('page-bold').addEventListener('change',()=>save({pageBold:$('page-bold').checked}));
+  $('read-selection').addEventListener('click',()=>speechClick('SPEECH_START','selection'));
+  $('read-page').addEventListener('click',()=>speechClick('SPEECH_START','page'));
+  $('speech-pause').addEventListener('click',()=>speechClick(speechState?.paused?'SPEECH_RESUME':'SPEECH_PAUSE'));
+  $('speech-stop').addEventListener('click',()=>speechClick('SPEECH_STOP'));
+  $('read-rate').addEventListener('change',()=>save({readRate:Number($('read-rate').value)}));
+  $('read-voice').addEventListener('change',()=>{
+    const voice=voiceCatalog?.find(item=>item.key===$('read-voice').value);
+    return save({readVoice:voice?{voiceName:voice.voiceName,lang:voice.lang}:null});
+  });
+  $('speech-preview').addEventListener('click',()=>speechClick('SPEECH_PREVIEW'));
+  $('refresh-voices').addEventListener('click',refreshVoices);
+  chrome.tts?.onVoicesChanged?.addListener(()=>{void refreshVoices();});
+  renderPage();renderSpeech();await Promise.allSettled([refreshPage(),refreshSpeech(),refreshVoices()]);
+  setInterval(()=>{void refreshPage();void refreshSpeech();},800);
+  for(const key of ['source','target'])$(key).addEventListener('click',()=>{choosing=key;$('picker-title').textContent=key==='source'?'Langue source':'Langue cible';$('search').value='';listLanguages();$('picker').showModal();$('search').focus();});
+  $('search').addEventListener('input',listLanguages);
+  $('close-picker').addEventListener('click',()=>$('picker').close());
+  $('enabled').addEventListener('change',()=>save({enabled:$('enabled').checked}));
+  $('remember').addEventListener('change',async()=>{
+    const enabled=$('remember').checked;await save({historyEnabled:enabled});
+    if(!enabled){await chrome.runtime.sendMessage({type:'CLEAR_HISTORY'});await renderHistory();}
+  });
+  $('swap').addEventListener('click',()=>{
+    let source=prefs.source==='auto'?lastDetected:prefs.source;
+    if(source===prefs.target)source=prefs.target==='en'?'fr':'en';
+    save({source:prefs.target,target:source});notice('Langues inversées. Choisis « Détection auto » pour la réactiver.');
+  });
+  $('clear').addEventListener('click',async()=>{await chrome.runtime.sendMessage({type:'CLEAR_HISTORY'});await renderHistory();notice('Historique effacé.');});
+  chrome.storage.onChanged.addListener((changes,area)=>{
+    if(area==='local'&&changes.history)renderHistory().catch(error=>notice(error.message));
+    if(area==='sync'){for(const key of Object.keys(DEFAULTS))if(changes[key])prefs[key]=changes[key].newValue;prefs=normalizeSettings(prefs);renderPrefs();}
+  });
+}
+init().catch(error=>notice(error.message || 'Impossible de charger Luma. Rouvre le menu.'));
+
+document.getElementById('demo-go').onclick=()=>{const samples={'Bonjour, comment allez-vous ?':'Hello, how are you?','Merci':'Thank you','Au revoir':'Goodbye'};document.getElementById('demo-result').textContent=samples[document.getElementById('demo-pick').value]};
+
+})();
+</script>
+</body></html>
