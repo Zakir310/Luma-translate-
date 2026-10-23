@@ -5,7 +5,13 @@ majoritairement blanche et des accents noirs.
 
 ## Télécharger et installer
 
-[Télécharger le ZIP de l’extension](https://github.com/Zakir310/Luma-translate-/raw/refs/heads/main/livraison/Luma-CHROME.zip)
+[Télécharger Luma avec ElevenLabs](https://github.com/Zakir310/Luma-translate-/raw/refs/heads/main/livraison/Luma-ElevenLabs.zip)
+
+Ce ZIP inclut l’extension et son serveur local privé. Suivre
+[les instructions ElevenLabs](livraison/INSTALLATION-ELEVENLABS.txt) : installer
+Node.js 22+, lancer `node start.mjs` dans le dossier `serveur`, saisir une nouvelle
+clé dans le terminal, puis connecter les voix depuis le menu de Luma.
+La clé n’est jamais intégrée à l’extension. Garder le menu ouvert pendant la lecture.
 
 1. Décompresser le ZIP sur un ordinateur.
 2. Ouvrir `chrome://extensions` dans Chrome et activer le mode développeur.
@@ -26,7 +32,9 @@ dans Chromium. Le chargement complet de l’extension et la traduction en ligne
 restent à valider sur Chrome utilisateur.
 
 La traduction réelle utilise le service Google non officiel présent dans
-l’archive d’origine. La lecture utilise les voix locales. ElevenLabs n’est pas
-encore connecté ; aucune clé API n’est incluse dans ce dépôt.
+l’archive d’origine. La lecture ElevenLabs utilise un serveur local sur le même ordinateur que Chrome.
+Les tests serveur et interface passent avec une API simulée ; aucune génération
+réelle n’a été validée faute de clé configurée. Les voix locales restent optionnelles.
+Aucune clé API n’est incluse dans ce dépôt.
 
 Voir [TESTER.md](TESTER.md) pour les détails.
