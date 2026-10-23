@@ -26,8 +26,11 @@ est désormais l’aperçu de référence, fondé sur votre véritable extension
 
 ## ElevenLabs
 
-L’intégration n’est pas encore effectuée : la CLI attend une clé dans
-`ELEVENLABS_API_KEY`, configurée dans les secrets de l’environnement.
-Aucune clé ne doit être incluse dans les fichiers de l’extension ou une archive.
-Une connexion serveur sera nécessaire pour utiliser une clé privée depuis une
-extension distribuée. La lecture actuelle utilise toujours les voix locales.
+La version 1.4.0 ajoute la connexion ElevenLabs via un serveur local privé.
+Voir `livraison/INSTALLATION-ELEVENLABS.txt`. La clé se saisit dans le terminal,
+jamais dans le HTML ni le code de l’extension. Le menu doit rester ouvert pendant
+la lecture. Maximum 5 000 caractères ; chaque génération utilise votre quota.
+
+Vérification développeur : `node --test server/server.test.mjs`.
+Les tests utilisent une API simulée. La génération ElevenLabs réelle n’a pas encore
+été vérifiée. L’ancien aperçu HTML ne couvre pas cette nouvelle intégration.

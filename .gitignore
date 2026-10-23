@@ -1,2 +1,5 @@
 # Local secrets written by `elevenlabs onboard`
 /.env.local
+
+/server/.env
+/server/.env.*

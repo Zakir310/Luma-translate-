@@ -1,0 +1,31 @@
+LUMA 1.4 — VOIX ELEVENLABS
+
+IMPORTANT : cette version utilise un petit serveur local pour garder votre clé privée.
+Aucune clé n’est fournie. Remplacez la clé publiée dans le chat par une nouvelle.
+
+1. Installez Node.js 22 ou plus récent depuis https://nodejs.org
+2. Décompressez entièrement ce ZIP sur votre ordinateur.
+3. Ouvrez le dossier serveur :
+   - Windows : double-cliquez DEMARRER-WINDOWS.bat
+   - Mac/Linux : ouvrez un terminal dans ce dossier, tapez node start.mjs
+4. Saisissez votre nouvelle clé ElevenLabs dans le terminal. La saisie est masquée.
+   Elle reste en mémoire et n’est pas enregistrée. Gardez ce terminal ouvert.
+   La clé doit permettre de lister les voix et de générer de la parole (Text to Speech).
+5. Dans Chrome ordinateur, ouvrez chrome://extensions et activez Mode développeur.
+   Retirez ou désactivez l’ancienne Luma, puis cliquez Charger l’extension non empaquetée.
+   Sélectionnez le dossier Luma de ce ZIP, celui qui contient manifest.json.
+6. Ouvrez le menu Luma. Sous Voix naturelles · ElevenLabs, cliquez
+   Connecter et charger les voix, choisissez une voix et cliquez Écouter un exemple.
+   Ce test utilise votre quota ElevenLabs et envoie le texte à ElevenLabs.
+7. Pour lire une sélection : rechargez une page web ordinaire, sélectionnez du texte,
+   ouvrez Luma et cliquez Lire la sélection dans la section ElevenLabs.
+
+LIMITES :
+- Gardez le menu Luma ouvert pendant la lecture. Fermer le menu arrête le son.
+- Maximum 5 000 caractères par génération. Les longues pages doivent être lues par sélection.
+- Les voix de l’ordinateur restent disponibles dans une section optionnelle séparée.
+- Le serveur doit tourner sur le même ordinateur que Chrome (127.0.0.1:8787).
+- Ce paquet n’est pas compatible avec Chrome mobile.
+
+VALIDATION : tests serveur et boutons de l’interface vérifiés avec une API simulée.
+Une génération réelle ElevenLabs n’a pas été validée faute de clé configurée de façon sécurisée.

@@ -11,7 +11,18 @@
       <small>TRADUIRE VERS</small><button id="target" class="language" aria-haspopup="dialog">Français <span>⌄</span></button>
     </section>
     <p class="hint">Sélectionne un texte, puis clique sur <b>A↔</b>.<br>Une traduction, sans quitter ta page.</p>
-    <section class="card speech-card" aria-label="Lecture à voix haute">
+    <section class="card page-card" aria-label="Voix ElevenLabs">
+      <div class="section-title"><h2>Voix naturelles · ElevenLabs</h2><span class="page-target">NOUVEAU</span></div>
+      <p class="page-status">Gardez ce menu ouvert pendant l’écoute. Le texte sera envoyé à ElevenLabs ; la génération utilise vos crédits.</p>
+      <button id="el-connect" type="button">Connecter et charger les voix</button>
+      <label class="voice-label" for="el-voice">Voix ElevenLabs</label>
+      <select id="el-voice" disabled><option value="">Connectez le serveur local</option></select>
+      <div class="speech-actions" style="margin-top:10px"><button id="el-selection" disabled>Lire la sélection</button><button id="el-page" disabled>Lire la page</button></div>
+      <div class="speech-actions" style="margin-top:8px"><button id="el-preview" disabled>Écouter un exemple</button><button id="el-stop" disabled>Arrêter</button></div>
+      <audio id="el-audio" controls hidden style="width:100%;margin-top:12px"></audio>
+      <p id="el-status" class="page-status" role="status" aria-live="polite">Serveur requis sur cet ordinateur. Consultez INSTALLATION.txt dans le ZIP.</p>
+    </section>
+    <details><summary style="margin-bottom:12px;cursor:pointer">Voix de l’ordinateur (option)</summary><section class="card speech-card" aria-label="Lecture à voix haute">
       <div class="section-title"><h2>Lecture à voix haute</h2><label class="speed-label">Vitesse <select id="read-rate" aria-label="Vitesse de lecture"><option value="0.8">0,8×</option><option value="0.9">0,9×</option><option value="0.95" selected>Doux · 0,95×</option><option value="1">1×</option><option value="1.2">1,2×</option><option value="1.5">1,5×</option></select></label></div>
       <div class="speech-actions"><button id="read-selection" type="button">Lire la sélection</button><button id="read-page" type="button">Lire toute la page</button></div>
       <p id="speech-status" class="page-status" role="status" aria-live="polite">Choisis le texte sélectionné ou toute la page.</p>
@@ -25,7 +36,7 @@
       </details>
       <small class="page-privacy">Voix locales de l’ordinateur · Lit le texte affiché</small>
     </section>
-    <section class="card page-card" aria-label="Traduction de la page entière">
+    </details><section class="card page-card" aria-label="Traduction de la page entière">
       <div class="section-title"><h2>Toute la page</h2><span id="page-target" class="page-target"></span></div>
       <div class="page-actions"><button id="translate-page" type="button">Traduire cette page</button><button id="restore-page" type="button" hidden>Afficher l’original</button></div>
       <label class="remember page-emphasis"><input id="page-bold" type="checkbox" checked> Afficher le texte traduit en gras</label>
@@ -41,4 +52,5 @@
   <footer><span class="privacy-dot"></span>Traduction : texte envoyé à Google à la demande.<br><span class="muted">Service gratuit non officiel · Disponibilité variable</span></footer>
   <dialog id="picker"><div class="picker-header"><h2 id="picker-title">Choisir une langue</h2><button id="close-picker" aria-label="Fermer">×</button></div><input id="search" type="search" placeholder="Rechercher une langue…" aria-label="Rechercher une langue" autocomplete="off"><div id="languages" class="options"></div></dialog>
   <script type="module" src="popup.js"></script>
+  <script type="module" src="elevenlabs.js"></script>
 </body></html>
