@@ -24,6 +24,36 @@ $('el-connect').onclick=async()=>{
   try{const h=await health();if(!h)throw Error(UNREACHABLE);if(!h.configured)throw Error('Serveur lancé, mais la clé n’est pas encore saisie. Collez votre clé ElevenLabs dans la fenêtre du serveur, appuyez sur Entrée, puis réessayez.');status('Connexion à ElevenLabs…');const {voices}=await (await call('/voices',{},70000)).json();if(!voices?.length)throw Error('Aucune voix disponible sur ce compte ElevenLabs.');$('el-voice').replaceChildren(...voices.map(v=>{const o=document.createElement('option');o.value=v.voice_id;o.textContent=v.name;return o}));const saved=await chrome.storage.local.get('elevenVoice');if(voices.some(v=>v.voice_id===saved.elevenVoice))$('el-voice').value=saved.elevenVoice;connected=true;status('ElevenLabs connecté. Choisissez une voix puis un texte à lire.')}catch(e){connected=false;status(e.message)}finally{busy=false;render()}
 };
 $('el-voice').onchange=()=>chrome.storage.local.set({elevenVoice:$('el-voice').value});
+// Read the selection straight from the page (all frames), without relying on a
+// content script that may be missing or stale after the extension was updated.
+function grabSelection(){
+  const field=document.activeElement;
+  if(field?.matches?.('input[type="password"]'))return {error:'La lecture des mots de passe est désactivée.'};
+  if(field?.matches?.('input,textarea')&&typeof field.selectionStart==='number')return {text:field.value.slice(field.selectionStart,field.selectionEnd).trim()};
+  return {text:(getSelection()?.toString()||'').trim()};
+}
+async function selectionText(tabId){
+  let results;
+  try{results=await chrome.scripting.executeScript({target:{tabId,allFrames:true},func:grabSelection})}
+  catch{results=await chrome.scripting.executeScript({target:{tabId},func:grabSelection}).catch(()=>null)}
+  if(!results)throw Error('Luma n’a pas accès à cette page. Rechargez-la (Cmd+R ou F5), sélectionnez le texte, puis rouvrez Luma.');
+  const found=results.map(r=>r.result).filter(Boolean);
+  const blocked=found.find(r=>r.error);if(blocked&&!found.some(r=>r.text))throw Error(blocked.error);
+  const best=found.filter(r=>r.text).sort((a,b)=>b.text.length-a.text.length)[0];
+  if(!best)throw Error('Aucun texte sélectionné. Surlignez un passage sur la page, puis cliquez « Lire la sélection ».');
+  return best.text;
+}
+async function pageText(tabId){
+  const ask=()=>chrome.tabs.sendMessage(tabId,{type:'READ_TEXT',mode:'page'},{frameId:0});
+  let result;
+  try{result=await ask()}catch{}
+  if(!result){
+    try{await chrome.scripting.executeScript({target:{tabId},files:['reader.js']});result=await ask()}catch{}
+  }
+  if(!result)throw Error('Luma n’a pas accès à cette page. Rechargez-la (Cmd+R ou F5), puis rouvrez Luma.');
+  if(!result.ok)throw Error(result.error||'Texte de la page indisponible.');
+  return result.text;
+}
 async function read(mode){
   if(busy)return;stop();busy=true;controller=new AbortController();render();status('Préparation de la voix ElevenLabs…');
   try{
@@ -32,16 +62,14 @@ async function read(mode){
     if(mode!=='preview'){
       const [tab]=await chrome.tabs.query({active:true,currentWindow:true});
       if(!tab?.id||!/^https?:/.test(tab.url||''))throw Error('Ouvrez une page web ordinaire pour lire son texte.');
-      let result;
-      try{result=await chrome.tabs.sendMessage(tab.id,{type:'READ_TEXT',mode},{frameId:0})}catch{await chrome.scripting.executeScript({target:{tabId:tab.id},files:['reader.js']});result=await chrome.tabs.sendMessage(tab.id,{type:'READ_TEXT',mode},{frameId:0})}
-      if(!result?.ok)throw Error(result?.error||'Texte indisponible.');text=result.text;
+      text=mode==='selection'?await selectionText(tab.id):await pageText(tab.id);
     }
     if(text.length>5000)throw Error('Sélectionnez un passage plus court (5 000 caractères maximum). Aucun texte envoyé.');
     const response=await call('/speech',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,voice:$('el-voice').value})});
     const blob=await response.blob();if(controller.signal.aborted)return;
     url=URL.createObjectURL(blob);$('el-audio').src=url;$('el-audio').hidden=false;
     await $('el-audio').play();status('Lecture ElevenLabs. Gardez ce menu ouvert. Utilisez le lecteur pour mettre en pause.');
-  }catch(e){status(e.name==='AbortError'?'Lecture annulée.':e.message)}finally{busy=false;controller=null;render()}
+  }catch(e){status(e.name==='AbortError'?'Lecture annulée.':e.name==='NotSupportedError'?'Audio reçu illisible. Réessayez ou choisissez une autre voix.':e.name==='NotAllowedError'?'Chrome a bloqué le son. Cliquez à nouveau sur le bouton de lecture.':e.message)}finally{busy=false;controller=null;render()}
 }
 for(const mode of ['selection','page','preview'])$('el-'+mode).onclick=()=>read(mode);
 $('el-stop').onclick=()=>{stop();status('Lecture arrêtée.')};

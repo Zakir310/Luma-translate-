@@ -1,4 +1,4 @@
-LUMA 1.4.1 — VOIX ELEVENLABS
+LUMA 1.4.2 — VOIX ELEVENLABS
 
 IMPORTANT : cette version utilise un petit serveur local pour garder votre clé privée.
 Aucune clé n’est fournie. Remplacez la clé publiée dans le chat par une nouvelle.
@@ -43,3 +43,8 @@ MISE À JOUR 1.4.1 — « SERVEUR INACCESSIBLE »
   chmod +x DEMARRER-MAC.command  (ou simplement : node start.mjs)
 - Remplacez LES DEUX dossiers (Luma et serveur), puis cliquez « Actualiser » sur Luma
   dans chrome://extensions.
+
+MISE À JOUR 1.4.2 — « TEXTE INDISPONIBLE »
+- « Lire la sélection » lit directement le texte surligné, y compris dans les cadres intégrés.
+- Remplacez le dossier Luma, cliquez « Actualiser » dans chrome://extensions,
+  puis RECHARGEZ la page web (Cmd+R) avant de sélectionner le texte.
