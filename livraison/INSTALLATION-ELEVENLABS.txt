@@ -1,4 +1,4 @@
-LUMA 1.4 — VOIX ELEVENLABS
+LUMA 1.4.1 — VOIX ELEVENLABS
 
 IMPORTANT : cette version utilise un petit serveur local pour garder votre clé privée.
 Aucune clé n’est fournie. Remplacez la clé publiée dans le chat par une nouvelle.
@@ -33,3 +33,13 @@ Une génération réelle ElevenLabs n’a pas été validée faute de clé confi
 MISE À JOUR DIAGNOSTIC
 Le serveur vérifie maintenant les voix au démarrage et distingue les erreurs de clé et de permissions.
 Si Luma est déjà installé, remplacez uniquement le dossier serveur après avoir arrêté l’ancien serveur (Ctrl+C).
+
+MISE À JOUR 1.4.1 — « SERVEUR INACCESSIBLE »
+- Le serveur s'ouvre maintenant AVANT la saisie de la clé : Luma indique s'il est lancé
+  et s'il attend encore votre clé.
+- Les lanceurs vérifient que Node.js est installé et ouvrent nodejs.org sinon.
+- Une clé refusée peut être ressaisie sans relancer le serveur.
+- Mac : si le double-clic est refusé, ouvrez Terminal dans le dossier serveur et tapez
+  chmod +x DEMARRER-MAC.command  (ou simplement : node start.mjs)
+- Remplacez LES DEUX dossiers (Luma et serveur), puis cliquez « Actualiser » sur Luma
+  dans chrome://extensions.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Luma — Traduction au clic",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Traduction au clic et lecture ElevenLabs via un serveur local privé.",
   "minimum_chrome_version": "114",
   "permissions": [
