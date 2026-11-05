@@ -21,3 +21,5 @@ dialog{color:#171717;background:white;border-color:#ddd;border-radius:18px;box-s
 button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid #333;outline-offset:3px}
 button:disabled{opacity:.45}.paused .dot{background:#aaa}
 @media(max-width:390px){body{width:100%}header{padding:22px 18px}main{padding:0 18px}}
+#el-key{border:1px solid #ddd;border-radius:9px;min-height:35px;padding:0 10px;font:inherit;font-size:12px;background:#fff;color:#252525}
+#el-key:focus{outline:2px solid #111;outline-offset:1px}

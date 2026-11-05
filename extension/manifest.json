@@ -1,17 +1,19 @@
 {
   "manifest_version": 3,
   "name": "Luma — Traduction au clic",
-  "version": "1.4.2",
-  "description": "Traduction au clic et lecture ElevenLabs via un serveur local privé.",
+  "version": "1.5.0",
+  "description": "Traduction au clic et voix naturelles ElevenLabs, sans serveur à lancer.",
   "minimum_chrome_version": "114",
   "permissions": [
     "storage",
     "activeTab",
     "scripting",
-    "tts"
+    "tts",
+    "offscreen"
   ],
   "host_permissions": [
     "https://translate.googleapis.com/*",
+    "https://api.elevenlabs.io/*",
     "http://127.0.0.1:8787/*"
   ],
   "background": {

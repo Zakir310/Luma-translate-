@@ -1,50 +1,32 @@
-LUMA 1.4.2 — VOIX ELEVENLABS
+LUMA 1.5 — VOIX ELEVENLABS, SANS SERVEUR
 
-IMPORTANT : cette version utilise un petit serveur local pour garder votre clé privée.
-Aucune clé n’est fournie. Remplacez la clé publiée dans le chat par une nouvelle.
+Plus besoin de Node.js, de terminal ni de serveur à lancer.
 
-1. Installez Node.js 22 ou plus récent depuis https://nodejs.org
-2. Décompressez entièrement ce ZIP sur votre ordinateur.
-3. Ouvrez le dossier serveur :
-   - Windows : double-cliquez DEMARRER-WINDOWS.bat
-   - Mac/Linux : ouvrez un terminal dans ce dossier, tapez node start.mjs
-4. Saisissez votre nouvelle clé ElevenLabs dans le terminal. La saisie est masquée.
-   Elle reste en mémoire et n’est pas enregistrée. Gardez ce terminal ouvert.
-   La clé doit permettre de lister les voix et de générer de la parole (Text to Speech).
-5. Dans Chrome ordinateur, ouvrez chrome://extensions et activez Mode développeur.
-   Retirez ou désactivez l’ancienne Luma, puis cliquez Charger l’extension non empaquetée.
-   Sélectionnez le dossier Luma de ce ZIP, celui qui contient manifest.json.
-6. Ouvrez le menu Luma. Sous Voix naturelles · ElevenLabs, cliquez
-   Connecter et charger les voix, choisissez une voix et cliquez Écouter un exemple.
-   Ce test utilise votre quota ElevenLabs et envoie le texte à ElevenLabs.
-7. Pour lire une sélection : rechargez une page web ordinaire, sélectionnez du texte,
-   ouvrez Luma et cliquez Lire la sélection dans la section ElevenLabs.
+INSTALLER / METTRE À JOUR
+1. Décompressez ce ZIP (Mac : double-clic ; Windows : clic droit → Extraire tout).
+2. Dans Chrome, ouvrez chrome://extensions et activez « Mode développeur ».
+   - Déjà installé : remplacez l'ancien dossier Luma par le nouveau,
+     puis cliquez « Actualiser » (↻) sous Luma. La version doit afficher 1.5.0.
+   - Nouvelle installation : « Charger l'extension non empaquetée » → dossier Luma
+     (celui qui contient manifest.json).
+3. Rechargez vos pages web ouvertes (Cmd+R ou F5).
 
-LIMITES :
-- Gardez le menu Luma ouvert pendant la lecture. Fermer le menu arrête le son.
-- Maximum 5 000 caractères par génération. Les longues pages doivent être lues par sélection.
-- Les voix de l’ordinateur restent disponibles dans une section optionnelle séparée.
-- Le serveur doit tourner sur le même ordinateur que Chrome (127.0.0.1:8787).
-- Ce paquet n’est pas compatible avec Chrome mobile.
+CONNECTER ELEVENLABS (une seule fois)
+1. Sur https://elevenlabs.io/app/settings/api-keys, créez une clé avec
+   « Text to Speech : Access » et « Voices : Read ».
+2. Ouvrez le menu Luma, collez la clé dans « Clé API ElevenLabs », cliquez « Enregistrer ».
+3. La clé reste enregistrée sur CET ordinateur, dans Chrome (jamais synchronisée).
+   Les voix se chargent ensuite automatiquement à chaque ouverture.
 
-VALIDATION : tests serveur et boutons de l’interface vérifiés avec une API simulée.
-Une génération réelle ElevenLabs n’a pas été validée faute de clé configurée de façon sécurisée.
+LIRE
+- Sélectionnez du texte, ouvrez Luma, cliquez « Lire la sélection ».
+- Vous pouvez FERMER LE MENU : la lecture continue. Rouvrez-le pour Pause / Arrêter.
+- « Lire la page » découpe automatiquement les longs textes (jusqu'à 20 000 caractères).
+- Chaque lecture envoie le texte à ElevenLabs et consomme vos crédits.
 
-MISE À JOUR DIAGNOSTIC
-Le serveur vérifie maintenant les voix au démarrage et distingue les erreurs de clé et de permissions.
-Si Luma est déjà installé, remplacez uniquement le dossier serveur après avoir arrêté l’ancien serveur (Ctrl+C).
+SÉCURITÉ
+- Ne partagez jamais votre clé. « Changer de clé » la supprime de Luma.
+- Si elle a été publiée quelque part, supprimez-la sur ElevenLabs et créez-en une autre.
 
-MISE À JOUR 1.4.1 — « SERVEUR INACCESSIBLE »
-- Le serveur s'ouvre maintenant AVANT la saisie de la clé : Luma indique s'il est lancé
-  et s'il attend encore votre clé.
-- Les lanceurs vérifient que Node.js est installé et ouvrent nodejs.org sinon.
-- Une clé refusée peut être ressaisie sans relancer le serveur.
-- Mac : si le double-clic est refusé, ouvrez Terminal dans le dossier serveur et tapez
-  chmod +x DEMARRER-MAC.command  (ou simplement : node start.mjs)
-- Remplacez LES DEUX dossiers (Luma et serveur), puis cliquez « Actualiser » sur Luma
-  dans chrome://extensions.
-
-MISE À JOUR 1.4.2 — « TEXTE INDISPONIBLE »
-- « Lire la sélection » lit directement le texte surligné, y compris dans les cadres intégrés.
-- Remplacez le dossier Luma, cliquez « Actualiser » dans chrome://extensions,
-  puis RECHARGEZ la page web (Cmd+R) avant de sélectionner le texte.
+ANCIEN SERVEUR LOCAL
+Il n'est plus nécessaire. Vous pouvez fermer sa fenêtre et supprimer le dossier « serveur ».
