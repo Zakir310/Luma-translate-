@@ -1,42 +1,102 @@
-# Luma — traduction au clic
+<p align="center"><img src="docs/icon.png" width="96" alt="Icône Luma"></p>
 
-Extension Chrome basée sur la version 1.3.1 fournie, avec une interface
-majoritairement blanche et des accents noirs.
+<h1 align="center">Luma</h1>
+<p align="center"><b>Les mots, sans les frontières.</b><br>
+Traduction au clic et voix naturelles ElevenLabs, directement dans Chrome.</p>
 
-## Télécharger et installer
+<p align="center"><a href="https://github.com/Zakir310/Luma-translate-/raw/refs/heads/main/livraison/Luma.zip"><b>⬇ Télécharger Luma 1.6.0</b></a></p>
 
-[Télécharger Luma avec ElevenLabs](https://github.com/Zakir310/Luma-translate-/raw/refs/heads/main/livraison/Luma-ElevenLabs.zip)
+---
 
-Depuis la version 1.5, plus besoin de serveur ni de terminal : collez votre clé
-ElevenLabs une seule fois dans le menu Luma, elle reste enregistrée dans Chrome sur cet
-ordinateur (jamais synchronisée). La lecture continue même menu fermé.
-Voir [les instructions](livraison/INSTALLATION-ELEVENLABS.txt).
+## Fonctionnalités
 
-1. Décompresser le ZIP sur un ordinateur.
-2. Ouvrir `chrome://extensions` dans Chrome et activer le mode développeur.
-3. Cliquer sur **Charger l’extension non empaquetée** et choisir le dossier
-   **Luma** extrait, celui qui contient `manifest.json`.
-4. Ouvrir une page web ordinaire, la recharger et sélectionner du texte.
+| | |
+|---|---|
+| **Traduire une sélection** | Surlignez un texte sur n'importe quelle page, cliquez sur la bulle **A↔** ou appuyez sur **Alt+T**. |
+| **Traduire toute la page** | Un clic dans le menu traduit la page entière ; « Afficher l'original » la remet comme avant. |
+| **Voix naturelles ElevenLabs** | Écoutez la sélection ou toute la page avec une voix réaliste. La lecture **continue même menu fermé**. |
+| **Voix de l'ordinateur** | Option gratuite, hors ligne, avec les voix installées sur votre ordinateur. |
+| **Historique** | Les 3 dernières traductions, effaçables à tout moment. |
 
-## Essai sans installation
+<p align="center"><img src="docs/menu.png" width="370" alt="Menu de Luma"></p>
 
-Télécharger [Luma-TEST.html](livraison/Luma-TEST.html) et l’ouvrir dans un navigateur.
-Ce fichier autonome permet de tester l’interface et quelques traductions locales
-d’exemple. Il ne traduit pas des textes libres ni des pages web.
+---
 
-## État de validation (version 1.5.3)
+## 1. Installer Luma dans Chrome
 
-- Testé par l’utilisateur sur Chrome (Mac) : traduction de sélection et de page,
-  lecture ElevenLabs avec une vraie clé.
-- Testé automatiquement dans Chromium avec des API simulées : traduction (souris,
-  Alt+T, page entière), clé ElevenLabs, lecture menu fermé, pause, pages longues.
+1. [Téléchargez **Luma.zip**](https://github.com/Zakir310/Luma-translate-/raw/refs/heads/main/livraison/Luma.zip) et décompressez-le
+   (Mac : double-clic · Windows : clic droit → **Extraire tout**).
+2. Dans Chrome, ouvrez `chrome://extensions` et activez **Mode développeur** (en haut à droite).
+3. Cliquez sur **Charger l'extension non empaquetée** et choisissez le dossier **`Luma`**
+   (celui qui contient `manifest.json`).
+4. Épinglez Luma : icône puzzle 🧩 de Chrome → punaise 📌 à côté de Luma.
+5. Rechargez les pages déjà ouvertes (**Cmd+R** / **F5**).
 
-La traduction utilise le service Google non officiel présent dans l’archive d’origine ;
-sa disponibilité n’est pas garantie. La lecture ElevenLabs appelle directement l’API
-depuis l’extension (le serveur local de `server/` reste utilisable en option).
-La clé est saisie dans le menu et stockée uniquement dans Chrome sur l’ordinateur.
-Aucune clé API n’est incluse dans ce dépôt.
+La traduction fonctionne immédiatement, sans compte ni clé.
 
-Icône : sources SVG dans `design/`.
+## 2. Obtenir votre clé API ElevenLabs (pour les voix)
 
-Voir [TESTER.md](TESTER.md) pour les détails.
+Les voix naturelles viennent d'[ElevenLabs](https://elevenlabs.io). Il vous faut **votre propre clé API** :
+elle n'est pas fournie avec Luma.
+
+1. Créez un compte gratuit sur **[elevenlabs.io](https://elevenlabs.io)** (ou connectez-vous).
+2. Ouvrez **[elevenlabs.io/app/settings/api-keys](https://elevenlabs.io/app/settings/api-keys)**
+   (menu de votre profil → **API Keys**).
+3. Cliquez sur **Create API Key** et donnez-lui un nom, par exemple `Luma`.
+4. Dans les permissions, activez au minimum :
+   - **Text to Speech** → *Access*
+   - **Voices** → *Read*
+5. Cliquez sur **Create**, puis **copiez la clé tout de suite** : ElevenLabs ne l'affiche qu'une seule fois.
+
+> 💡 **Crédits** : chaque lecture consomme des crédits ElevenLabs (environ 1 crédit par caractère).
+> Le plan gratuit inclut un petit quota mensuel ; consultez [elevenlabs.io/pricing](https://elevenlabs.io/pricing).
+> Les comptes gratuits peuvent être bloqués avec un VPN actif.
+
+## 3. Connecter ElevenLabs à Luma (une seule fois)
+
+1. Cliquez sur l'icône Luma dans Chrome.
+2. Collez la clé dans **Clé API ElevenLabs** et cliquez sur **Enregistrer**.
+3. Choisissez une voix, puis **Écouter un exemple**.
+
+C'est tout : la clé reste enregistrée et les voix se chargent automatiquement ensuite.
+Aucun serveur, aucun terminal.
+
+## 4. Utiliser
+
+- **Traduire** : sélectionnez un texte → bulle **A↔** ou **Alt+T**. Choisissez les langues dans le menu.
+- **Traduire la page** : menu → **Traduire cette page**.
+- **Écouter** : sélectionnez un texte → menu → **Lire la sélection** (ou **Lire la page**, jusqu'à 20 000 caractères).
+  Vous pouvez fermer le menu ; rouvrez-le pour **Pause** ou **Arrêter**.
+
+## Mettre à jour
+
+Téléchargez le nouveau `Luma.zip`, **remplacez votre dossier `Luma`**, puis cliquez sur **↻** sous Luma
+dans `chrome://extensions`. Vos réglages et votre clé sont conservés. Rechargez ensuite vos pages.
+
+---
+
+## Confidentialité et sécurité
+
+- **Traduction** : le texte à traduire est envoyé au service Google Translate (gratuit, non officiel,
+  disponibilité non garantie), uniquement quand vous le demandez.
+- **Voix** : le texte à lire est envoyé à ElevenLabs avec votre clé.
+- **Votre clé** est stockée uniquement dans Chrome sur votre ordinateur (`chrome.storage.local`),
+  jamais synchronisée ni envoyée ailleurs qu'à ElevenLabs. Le bouton **Changer de clé** la supprime.
+- **Ne partagez jamais votre clé** (ni dans un chat, ni sur GitHub). Si c'est arrivé, supprimez-la
+  sur ElevenLabs et créez-en une nouvelle.
+- Aucune clé n'est incluse dans ce dépôt.
+
+## Dépannage
+
+| Message | Solution |
+|---|---|
+| *La clé est invalide ou révoquée* | Recopiez la clé, ou créez-en une nouvelle sur ElevenLabs. |
+| *La clé n'a pas les bonnes permissions* | Sur ElevenLabs, modifiez la clé : **Text to Speech** et **Voices : Read**. |
+| *Crédits ElevenLabs épuisés* | Attendez le renouvellement mensuel ou changez d'offre. |
+| *activité inhabituelle* | Désactivez votre VPN (comptes gratuits). |
+| *Aucun texte sélectionné* / *Luma n'a pas accès à cette page* | Rechargez la page (**Cmd+R**), resélectionnez, rouvrez Luma. |
+| La bulle **A↔** n'apparaît pas | Vérifiez que l'interrupteur Luma est activé, puis rechargez la page. Les pages `chrome://` et le Chrome Web Store sont interdits aux extensions. |
+
+## Pour les développeurs
+
+Voir [DEVELOPPEMENT.md](DEVELOPPEMENT.md) et l'[historique des versions](CHANGELOG.md).
