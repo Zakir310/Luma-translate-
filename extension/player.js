@@ -3,7 +3,7 @@ import {synthesize,chunks} from './eleven-api.js';
 const audio=document.getElementById('audio');
 let state={status:'idle',message:'',part:0,parts:0};
 let controller=null,url=null,queue=[],job=0,prepared=null;
-function emit(patch){state={...state,...patch};chrome.runtime.sendMessage({target:'luma-popup',type:'EL_STATE',state}).catch(()=>{})}
+function emit(patch){state={...state,...patch};chrome.runtime.sendMessage({lumaRoute:'luma-popup',type:'EL_STATE',state}).catch(()=>{})}
 function release(){if(url)URL.revokeObjectURL(url);url=null}
 function stop(message='Lecture arrêtée.'){job++;controller?.abort();controller=null;audio.pause();audio.removeAttribute('src');audio.load();release();queue=[];prepared=null;emit({status:'idle',message,part:0,parts:0})}
 async function fetchPart(id,request,index){
@@ -33,7 +33,7 @@ async function play(request){
   catch(e){if(id===job)stop(e.name==='AbortError'?'Lecture annulée.':e.message)}
 }
 chrome.runtime.onMessage.addListener((message,sender,reply)=>{
-  if(message?.target!=='luma-player'||sender.id!==chrome.runtime.id)return;
+  if(message?.lumaRoute!=='luma-player'||sender.id!==chrome.runtime.id)return;
   if(message.type==='PLAY')play(message);
   else if(message.type==='STOP')stop();
   else if(message.type==='PAUSE'){if(state.status==='playing'){audio.pause();emit({status:'paused',message:'Lecture en pause.'})}}

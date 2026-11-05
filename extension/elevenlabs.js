@@ -82,11 +82,11 @@ async function send(type,extra={}){
     try{await chrome.offscreen.createDocument({url:'player.html',reasons:['AUDIO_PLAYBACK'],justification:'Lecture des voix ElevenLabs quand le menu est fermé.'})}
     catch(e){if(!String(e.message).includes('single offscreen'))throw e}
   }else if(!(await playerExists()))return null;
-  const answer=await chrome.runtime.sendMessage({target:'luma-player',type,...extra});
+  const answer=await chrome.runtime.sendMessage({lumaRoute:'luma-player',type,...extra});
   return answer?.state||null;
 }
 function show(state){if(!state)return;player=state;if(state.message)status(state.message);render()}
-chrome.runtime.onMessage.addListener(message=>{if(message?.target==='luma-popup'&&message.type==='EL_STATE')show(message.state)});
+chrome.runtime.onMessage.addListener(message=>{if(message?.lumaRoute==='luma-popup'&&message.type==='EL_STATE')show(message.state)});
 
 async function read(mode){
   try{
