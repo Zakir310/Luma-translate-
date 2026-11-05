@@ -30,3 +30,13 @@ test('401 permission and invalid key errors are distinguished without leaking me
   });
  }
 });
+test('key can be set after start and Chrome private-network preflight is accepted',async()=>{
+ const s=createServer({key:'',request:async()=>Response.json({voices:[]})});await new Promise(r=>s.listen(0,'127.0.0.1',r));const base=`http://127.0.0.1:${s.address().port}`;
+ try{
+  const pre=await fetch(base+'/voices',{method:'OPTIONS',headers:{Origin:'chrome-extension://abcdefghijklmnopabcdefghijklmnop','Access-Control-Request-Private-Network':'true'}});
+  assert.equal(pre.status,204);assert.equal(pre.headers.get('access-control-allow-private-network'),'true');
+  assert.equal((await fetch(base+'/voices')).status,503);
+  s.setKey('later');const h=await (await fetch(base+'/health')).json();assert.equal(h.configured,true);assert.equal(h.app,'luma');
+  assert.equal((await fetch(base+'/voices')).status,200);
+ }finally{await new Promise(r=>s.close(r))}
+});

@@ -13,14 +13,14 @@
     <p class="hint">Sélectionne un texte, puis clique sur <b>A↔</b>.<br>Une traduction, sans quitter ta page.</p>
     <section class="card page-card" aria-label="Voix ElevenLabs">
       <div class="section-title"><h2>Voix naturelles · ElevenLabs</h2><span class="page-target">NOUVEAU</span></div>
-      <p class="page-status">Gardez ce menu ouvert pendant l’écoute. Le texte sera envoyé à ElevenLabs ; la génération utilise vos crédits.</p>
-      <button id="el-connect" type="button">Connecter et charger les voix</button>
+      <p class="page-status">Collez votre clé une seule fois : elle reste enregistrée sur cet ordinateur. La lecture continue même menu fermé. Le texte est envoyé à ElevenLabs et utilise vos crédits.</p>
+      <div id="el-key-row" class="voice-row"><input id="el-key" type="password" placeholder="Clé API ElevenLabs" autocomplete="off" spellcheck="false" aria-label="Clé API ElevenLabs" style="flex:1;min-width:0"><button id="el-save" type="button">Enregistrer</button></div>
+      <div id="el-key-saved" class="voice-row" hidden><span id="el-key-label" class="page-status" style="flex:1;margin:0">Clé enregistrée</span><button id="el-forget" type="button">Changer de clé</button></div>
       <label class="voice-label" for="el-voice">Voix ElevenLabs</label>
-      <select id="el-voice" disabled><option value="">Connectez le serveur local</option></select>
+      <div class="voice-row"><select id="el-voice" disabled style="flex:1;min-width:0"><option value="">Enregistrez votre clé</option></select><button id="el-connect" type="button" title="Recharger la liste des voix" aria-label="Recharger la liste des voix">↻</button></div>
       <div class="speech-actions" style="margin-top:10px"><button id="el-selection" disabled>Lire la sélection</button><button id="el-page" disabled>Lire la page</button></div>
-      <div class="speech-actions" style="margin-top:8px"><button id="el-preview" disabled>Écouter un exemple</button><button id="el-stop" disabled>Arrêter</button></div>
-      <audio id="el-audio" controls hidden style="width:100%;margin-top:12px"></audio>
-      <p id="el-status" class="page-status" role="status" aria-live="polite">Serveur requis sur cet ordinateur. Consultez INSTALLATION.txt dans le ZIP.</p>
+      <div class="speech-actions" style="margin-top:8px;grid-template-columns:1fr 1fr 1fr"><button id="el-preview" disabled>Écouter un exemple</button><button id="el-pause" disabled>Pause</button><button id="el-stop" disabled>Arrêter</button></div>
+      <p id="el-status" class="page-status" role="status" aria-live="polite">Collez votre clé ElevenLabs puis cliquez « Enregistrer ».</p>
     </section>
     <details><summary style="margin-bottom:12px;cursor:pointer">Voix de l’ordinateur (option)</summary><section class="card speech-card" aria-label="Lecture à voix haute">
       <div class="section-title"><h2>Lecture à voix haute</h2><label class="speed-label">Vitesse <select id="read-rate" aria-label="Vitesse de lecture"><option value="0.8">0,8×</option><option value="0.9">0,9×</option><option value="0.95" selected>Doux · 0,95×</option><option value="1">1×</option><option value="1.2">1,2×</option><option value="1.5">1,5×</option></select></label></div>

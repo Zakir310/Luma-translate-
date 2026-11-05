@@ -100,7 +100,7 @@ async function handle(message, sender) {
   return {ok:true,...result};
 }
 chrome.runtime.onMessage.addListener((message,sender,reply)=>{
-  if (sender.id !== chrome.runtime.id) return;
+  if (sender.id !== chrome.runtime.id || message?.lumaRoute) return; // messages du lecteur ElevenLabs
   handle(message || {},sender).then(reply,error=>reply({ok:false,error:error.message || 'Erreur inattendue.'}));
   return true;
 });

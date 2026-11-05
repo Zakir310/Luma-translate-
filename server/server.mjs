@@ -4,7 +4,7 @@ import {pathToFileURL} from 'node:url';
 export function createServer({key=process.env.ELEVENLABS_API_KEY,request=fetch}={}) {
   key=typeof key==='string'?key.trim():'';
   let busy=false;
-  return http.createServer(async(req,res)=>{
+  const server=http.createServer(async(req,res)=>{
     const origin=req.headers.origin;
     const allowed=!origin || /^chrome-extension:\/\/[a-p]{32}$/.test(origin);
     const send=(status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data))};
@@ -13,9 +13,11 @@ export function createServer({key=process.env.ELEVENLABS_API_KEY,request=fetch}=
     res.setHeader('Vary','Origin');
     res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers','Content-Type');
+    // Chrome Private/Local Network Access preflight for 127.0.0.1.
+    if(req.headers['access-control-request-private-network'])res.setHeader('Access-Control-Allow-Private-Network','true');
     if(req.method==='OPTIONS'){res.writeHead(204);return res.end()}
-    if(req.url==='/health'&&req.method==='GET')return send(200,{ok:true,configured:!!key});
-    if(!key)return send(503,{error:'Configurez ELEVENLABS_API_KEY sur le serveur, puis redémarrez-le.'});
+    if(req.url==='/health'&&req.method==='GET')return send(200,{ok:true,app:'luma',configured:!!key});
+    if(!key)return send(503,{error:'Serveur lancé mais clé absente : saisissez votre clé ElevenLabs dans la fenêtre du serveur.'});
     const voices=req.url==='/voices'&&req.method==='GET';
     const speech=req.url==='/speech'&&req.method==='POST';
     if(!voices&&!speech)return send(404,{error:'Route inconnue.'});
@@ -56,6 +58,8 @@ export function createServer({key=process.env.ELEVENLABS_API_KEY,request=fetch}=
     }catch{return send(502,{error:'Connexion ElevenLabs impossible ou délai dépassé.'})}
     finally{busy=false}
   });
+  server.setKey=value=>{key=typeof value==='string'?value.trim():''};
+  return server;
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   const server=createServer();
