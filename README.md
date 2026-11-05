@@ -24,7 +24,7 @@ Télécharger [Luma-TEST.html](livraison/Luma-TEST.html) et l’ouvrir dans un n
 Ce fichier autonome permet de tester l’interface et quelques traductions locales
 d’exemple. Il ne traduit pas des textes libres ni des pages web.
 
-## État de validation (version 1.5.2)
+## État de validation (version 1.5.3)
 
 - Testé par l’utilisateur sur Chrome (Mac) : traduction de sélection et de page,
   lecture ElevenLabs avec une vraie clé.

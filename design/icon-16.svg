@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
-<rect x="4" y="4" width="120" height="120" rx="28" fill="#111"/>
-<rect x="4.5" y="4.5" width="119" height="119" rx="27.5" fill="none" stroke="#fff" stroke-opacity=".14"/>
-<path d="M64 22 L96 100 H80 L74 84 H54 L48 100 H32 Z M64 46 L58 70 H70 Z" fill="#fff" fill-rule="evenodd"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%"><defs><clipPath id="c"><rect x="4" y="4" width="120" height="120" rx="30"/></clipPath></defs>
+  <g clip-path="url(#c)"><rect width="128" height="128" fill="#fff"/><path d="M0 0 H128 L0 128 Z" fill="#111"/></g>
+  <rect x="5" y="5" width="118" height="118" rx="29" fill="none" stroke="#111" stroke-width="2"/>
+  <text x="42" y="68" text-anchor="middle" font-size="60" style="font-family:'Inter Display','Inter',sans-serif;font-weight:800" fill="#fff">A</text>
+  <text x="86" y="110" text-anchor="middle" font-size="52" style="font-family:'WenQuanYi Zen Hei Mono','IPAGothic',sans-serif;font-weight:700" fill="#111">文</text></svg>
