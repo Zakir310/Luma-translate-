@@ -24,16 +24,19 @@ Télécharger [Luma-TEST.html](livraison/Luma-TEST.html) et l’ouvrir dans un n
 Ce fichier autonome permet de tester l’interface et quelques traductions locales
 d’exemple. Il ne traduit pas des textes libres ni des pages web.
 
-## État de validation
+## État de validation (version 1.5.2)
 
-Les contrôles de l’aperçu web et les exemples du fichier autonome ont été testés
-dans Chromium. Le chargement complet de l’extension et la traduction en ligne
-restent à valider sur Chrome utilisateur.
+- Testé par l’utilisateur sur Chrome (Mac) : traduction de sélection et de page,
+  lecture ElevenLabs avec une vraie clé.
+- Testé automatiquement dans Chromium avec des API simulées : traduction (souris,
+  Alt+T, page entière), clé ElevenLabs, lecture menu fermé, pause, pages longues.
 
-La traduction réelle utilise le service Google non officiel présent dans
-l’archive d’origine. La lecture ElevenLabs appelle directement l’API depuis l’extension (le serveur local de `server/` reste utilisable en option).
-Les tests serveur et interface passent avec une API simulée ; aucune génération
-réelle n’a été validée faute de clé configurée. Les voix locales restent optionnelles.
+La traduction utilise le service Google non officiel présent dans l’archive d’origine ;
+sa disponibilité n’est pas garantie. La lecture ElevenLabs appelle directement l’API
+depuis l’extension (le serveur local de `server/` reste utilisable en option).
+La clé est saisie dans le menu et stockée uniquement dans Chrome sur l’ordinateur.
 Aucune clé API n’est incluse dans ce dépôt.
+
+Icône : sources SVG dans `design/`.
 
 Voir [TESTER.md](TESTER.md) pour les détails.
