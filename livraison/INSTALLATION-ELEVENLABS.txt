@@ -1,4 +1,4 @@
-LUMA 1.5.2 — TRADUCTION + VOIX ELEVENLABS, SANS SERVEUR
+LUMA 1.5.3 — TRADUCTION + VOIX ELEVENLABS, SANS SERVEUR
 
 Plus besoin de Node.js, de terminal ni de serveur à lancer.
 
@@ -6,7 +6,7 @@ INSTALLER / METTRE À JOUR
 1. Décompressez ce ZIP (Mac : double-clic ; Windows : clic droit → Extraire tout).
 2. Dans Chrome, ouvrez chrome://extensions et activez « Mode développeur ».
    - Déjà installé : remplacez l'ancien dossier Luma par le nouveau,
-     puis cliquez « Actualiser » (↻) sous Luma. La version doit afficher 1.5.2.
+     puis cliquez « Actualiser » (↻) sous Luma. La version doit afficher 1.5.3.
    - Nouvelle installation : « Charger l'extension non empaquetée » → dossier Luma
      (celui qui contient manifest.json).
 3. Rechargez vos pages web ouvertes (Cmd+R ou F5).
