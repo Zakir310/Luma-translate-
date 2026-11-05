@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Luma — Traduction au clic",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "Traduction au clic et voix naturelles ElevenLabs, sans serveur à lancer.",
   "minimum_chrome_version": "114",
   "permissions": [
