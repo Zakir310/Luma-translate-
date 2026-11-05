@@ -1,0 +1,26 @@
+LUMA 1.6.0 — TRADUCTION AU CLIC + VOIX ELEVENLABS
+
+INSTALLER
+1. Dans Chrome, ouvrez chrome://extensions et activez « Mode développeur ».
+2. Cliquez « Charger l'extension non empaquetée » et choisissez le dossier Luma
+   (celui qui contient manifest.json).
+3. Rechargez vos pages web ouvertes (Cmd+R ou F5).
+   Mise à jour : remplacez l'ancien dossier Luma, puis cliquez ↻ sous Luma.
+
+TRADUIRE
+- Sélectionnez un texte, puis cliquez la bulle A↔ ou appuyez sur Alt+T.
+- Menu Luma → « Traduire cette page » pour traduire toute la page.
+
+VOIX ELEVENLABS — VOTRE CLÉ API
+Luma ne fournit pas de clé : il faut la vôtre.
+1. Créez un compte sur https://elevenlabs.io
+2. Ouvrez https://elevenlabs.io/app/settings/api-keys → « Create API Key ».
+3. Activez « Text to Speech : Access » et « Voices : Read », puis copiez la clé
+   (elle ne s'affiche qu'une fois).
+4. Menu Luma → collez la clé → « Enregistrer ». C'est fait une seule fois.
+- Chaque lecture utilise vos crédits ElevenLabs.
+- Vous pouvez fermer le menu pendant la lecture ; rouvrez-le pour Pause/Arrêter.
+
+SÉCURITÉ
+Votre clé reste dans Chrome sur cet ordinateur. Ne la partagez jamais.
+« Changer de clé » la supprime de Luma.
